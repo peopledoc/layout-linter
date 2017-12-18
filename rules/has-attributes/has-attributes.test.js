@@ -11,3 +11,9 @@ test('should fail when single attribute missing', (t) => {
   const document = new JSDOM("<p class=''>Hello world</p>").window;
   t.false(rule('.my-class', document));
 });
+
+test('should find multiple attributes when present', (t) => {
+  const document = new JSDOM("<p class='my-class other-class'>Hello world</p>")
+    .window;
+  t.true(rule('.my-class, .other-class', document));
+});
