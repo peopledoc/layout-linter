@@ -1,5 +1,3 @@
-import jquery from 'jquery';
-
-export default (selector, document) => {
-  return jquery(document)(selector).length === 1;
+export default (node, attributes) => {
+  return node.attr(attributes) !== undefined;
 };
