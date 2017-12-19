@@ -1,3 +1,6 @@
 export default (node, attributes) => {
-  return node.attr(attributes) !== undefined;
+  if (!Array.isArray(attributes)) {
+    attributes = new Array(attributes);
+  }
+  return attributes.every((attribute) => node.attr(attribute) !== undefined);
 };
