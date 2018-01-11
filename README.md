@@ -4,12 +4,12 @@
 
 ### Install
 
-    npm install debugger
+    yarn install --dev layoutlint
 
 ### Test
 
-    npm test
+    yarn test
 
 ### Build
 
-    npm build
+    yarn build
