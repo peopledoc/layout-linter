@@ -21,5 +21,11 @@
   "name": "layout-linter",
   "version": "0.0.1",
   "description": "Debug your design system",
-  "license": "MIT"
+  "license": "MIT",
+  "main": "index.js",
+  "repository": "git@github.com:peopledoc/layout-linter.git",
+  "author": "The PeopleDoc Team",
+  "contributors": [
+    "Édouard Lopez <contact@edouard-lopez.com>"
+  ]
 }
