@@ -4,7 +4,7 @@
 
 ### Install
 
-    npm install debugger
+    yarn install --dev peopledoc/layout-linter
 
 ### Test
 
