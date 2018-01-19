@@ -7,8 +7,11 @@
 1. Edit your `.layoutrc`
 
         {
-            target: '.my-element',
-            hasAttributes: ['class', 'role']
+          "target": ".my-element",
+          "hasAttributes": [
+            "class",
+            "role"
+          ]
         }
 
 2. Add `layoutlint.js` to your page ;
