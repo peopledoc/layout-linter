@@ -4,7 +4,7 @@
 
 ## Usage
 
-1. Edit your `.layoutrc`
+1. Edit `.layoutrc` at the root of your project:
 
         {
           "target": ".my-element",
