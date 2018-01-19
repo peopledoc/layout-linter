@@ -1,0 +1,7 @@
+{
+  "target": ".my-element",
+  "hasAttributes": [
+    "class",
+    "role"
+  ]
+}
