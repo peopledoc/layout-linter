@@ -1,0 +1,27 @@
+{
+  "rules": [{
+    "selector": ".el-1",
+    "is": "div",
+    "direct": [".direct-1-of-2", ".direct-2-of-2"],
+    "contains": [".indirect-1-of-2", ".indirect-2-of-2"],
+    "attr": ["attr-1-of-2", "attr-2-of-2='attr-2-of-2'", "class~='redding'"],
+    "not": {
+      "parent": ".bad-parent",
+      "direct": [".not-direct-1-of-2", ".not-direct-2-of-2"],
+      "contains": [".not-indirect-1-of-2", ".not-indirect-2-of-2"],
+      "attr": ["not-attr-1-of-2", "not-attr-2-of-2='not-attr-2-of-2'"]
+    }
+  }, {
+    "selector": ".el-2",
+    "direct": [".direct-1-of-2", ".direct-2-of-2"],
+    "contains": [".indirect-1-of-2", ".indirect-2-of-2"],
+    "attr": ["attr-1-of-2", "attr-2-of-2='attr-2-of-2'", "class~='red'"],
+    "not": {
+      "is": "section",
+      "direct": [".not-direct-1-of-2", ".not-direct-2-of-2"],
+      "contains": [".not-indirect-1-of-2", ".not-indirect-2-of-2"],
+      "attr": ["not-attr-1-of-2", "not-attr-2-of-2='not-attr-2-of-2'"]
+    },
+    "parent": ".parent-of-el-2"
+  }]
+}

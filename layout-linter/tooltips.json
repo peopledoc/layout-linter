@@ -1,0 +1,14 @@
+{
+  "parent": "parent must be {{placeholder}}",
+  "is": "tag must be a &lt;{{placeholder}}&gt;",
+  "direct": "element must contain this direct child: {{placeholder}}",
+  "contains": "element must contain this child: {{placeholder}}",
+  "attr": "element must have this attribute: {{placeholder}}",
+  "not": {
+    "parent": "parent must not be {{placeholder}}",
+    "is": "tag must not be a &lt;{{placeholder}}&gt;",
+    "direct": "element must not contain this direct child: {{placeholder}}",
+    "contains": "element must not contain this child: {{placeholder}}",
+    "attr": "element must not have this attribute: {{placeholder}}"
+  }
+}
