@@ -1,14 +1,5 @@
-# Layout linter
+# layout-linter
+A linter for your HTML 
 
-Lint your HTML layouts
-
-### Install
-
-
-### Test
-
-  make test
-
-### Build
-
-  make build
+#  /!\ work in progress /!\
+go to `/example-app` and run `make serve`
