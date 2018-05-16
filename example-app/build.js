@@ -1,9 +1,33 @@
 const fse = require('fs-extra');
 const lintLayout = require('../layout-linter');
 
-let source = './source.html'; // also valid: source = fse.readFileSync('./source.html').toString('utf-8');
+let lintedHTML = lintLayout({
 
-let lintedHTML = lintLayout(source);
+  /*
+    - optional
+    - will look for ./.layoutrc globally if omitted
+  */
+
+  //rulesFile: '/some/custom/json/location',
+
+
+
+  /*
+    - optional
+    - will use default layout-linter css if omitted
+  */
+
+  //cssFile: '/some/custom/css,
+
+
+
+
+  /*
+    - mandatory
+    - also accepts HTML string directly
+  */
+
+  source: './source.html'
+});
 
 fse.writeFileSync('./index.html', lintedHTML);
-
