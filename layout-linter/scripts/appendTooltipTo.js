@@ -1,14 +1,12 @@
 module.exports = function($el, errors, tooltipId) {
-  let existingTooltipId = $el.attr('layout-linter-tooltip');
+  let $body = $el.closest('body');
+  let existingTooltipId = $el.attr('layout-linter-tooltip-id');
 
   if (existingTooltipId) {
-    $tooltip = $(`#${existingTooltipId}`);
+    $tooltip = $body.find(`#${existingTooltipId}`);
   } else {
-    $el
-      .addClass('layout-linter-linted')
-      .attr('layout-linter-tooltip', tooltipId);
-    let $body = $el.closest('body');
-    $body.append(`<div id="${tooltipId}" class="layout-linter-tooltip"><h3>I'm a tooltip for "${$el.text()}"</h3><ul></ul></div>`);
+    $el.attr('layout-linter-tooltip-id', tooltipId);
+    $body.append(`<div id="${tooltipId}" class="layout-linter-tooltip"><ul></ul></div>`);
     $tooltip = $body.find(`#${tooltipId}`);
   }
 
