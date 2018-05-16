@@ -37,7 +37,6 @@
   height: auto;
   width: auto;
   border: 5px solid transparent;
-  /*box-shadow: 1px 1px 30px -9px black;*/
 }
 
 .layout-linter-tooltip:hover ul{
