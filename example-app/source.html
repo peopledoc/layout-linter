@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <style>
+      .layout-linter-linted {
+        border: 1px solid red;
+        margin: 10px;
+      }
+
+      .layout-linter-tooltip {
+        border: 1px solid red;
+        padding: 5px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bar-parent">
+      <section class="el-1" attr-2-of-2="wrong attr value" class="red and blue">
+        <div>
+          <div class="direct-1-of-2"></div>
+          <div class="direct-2-of-2"></div>
+          <div class="not-indirect-1-of-2"></div>
+        </div>
+        <div class="not-direct-1-of-2"></div>
+        <div class="not-direct-2-of-2"></div>
+        <div class="not-indirect-2-of-2"></div>
+        I'm a linted element with issues
+      </section>
+    </div>
+    <div class="bar-parent">
+      <section class="el-2" attr-2-of-2="wrong attr value" class="white and blue">
+        <div>
+          <div class="direct-1-of-2"></div>
+          <div class="direct-2-of-2"></div>
+          <div class="not-indirect-1-of-2"></div>
+        </div>
+        <div class="not-direct-1-of-2"></div>
+        <div class="not-direct-2-of-2"></div>
+        <div class="not-indirect-2-of-2"></div>
+        So am I
+      </section>
+    </div>
+  </body>
+</html>
