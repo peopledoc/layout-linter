@@ -8,7 +8,7 @@ let lintedHTML = lintLayout({
     - will look for ./.layoutrc globally if omitted
   */
 
-  //rulesFile: '/some/custom/json/location',
+  //layoutrc: '/some/custom/json/location',
 
 
 
