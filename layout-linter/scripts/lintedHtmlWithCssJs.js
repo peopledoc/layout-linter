@@ -9,5 +9,5 @@ module.exports = function(html, css, js, returnSnippet) {
   }
   $('head').append(styleTag);
   $('body').append(scriptTag);
-  return `<html>${$('html').html()}</html>`;
+  return `<!DOCTYPE html><html>${$('html').html()}</html>`;
 };
