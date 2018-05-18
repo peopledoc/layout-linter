@@ -1,7 +1,11 @@
 (function() {
+
+  var tooltipClassName = 'layout-linter-tooltip';
+  var tooltipTargetAttrName = 'layout-linter-tooltip-id';
+
   function positionTooltips() {
-    document.querySelectorAll('.layout-linter-tooltip').forEach(function(tooltip) {
-      var el = document.querySelector('[layout-linter-tooltip-id="'+tooltip.id+'"]');
+    document.querySelectorAll('.'+tooltipClassName).forEach(function(tooltip) {
+      var el = document.querySelector('['+tooltipTargetAttrName+'="'+tooltip.id+'"]');
       tooltip.style.top = el.offsetTop;
       tooltip.style.left = el.offsetLeft;
     });
@@ -12,4 +16,5 @@
   });
 
   positionTooltips();
+
 })();
