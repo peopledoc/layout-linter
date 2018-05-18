@@ -1,6 +1,6 @@
 const path = require('path');
 const fse = require('fs-extra');
-const lintLayout = require('../layout-linter');
+const lintLayout = require('../../index');
 
 let lintedHTML = lintLayout({
   /*

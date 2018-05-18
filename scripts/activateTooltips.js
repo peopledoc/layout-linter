@@ -6,8 +6,8 @@
   function positionTooltips() {
     document.querySelectorAll('.'+tooltipClassName).forEach(function(tooltip) {
       var el = document.querySelector('['+tooltipTargetAttrName+'="'+tooltip.id+'"]');
-      tooltip.style.top = el.offsetTop;
-      tooltip.style.left = el.offsetLeft;
+      tooltip.style.top = el.offsetTop + 'px';
+      tooltip.style.left = el.offsetLeft + 'px';
     });
   };
 
