@@ -1,15 +1,13 @@
 /*
-  if the rules file (json) is not passed to the function
-  it will look for it globally using its default name (.layoutrc)
+  - returns the "rules" key (array) found in the object returned by getLayoutrc()
 */
 
-const fse = require('fs-extra');
-const glob = require('glob');
-
-const defaultPathToLayoutrc = '.layoutrc';
+const getLayoutrc = require('./getLayoutrc');
 
 module.exports = function(pathToLayoutrc) {
-  pathToLayoutrc = pathToLayoutrc || glob.sync(defaultPathToLayoutrc)[0];
-  const layoutRcJson = fse.readFileSync(pathToLayoutrc).toString('utf-8');
-  return JSON.parse(layoutRcJson).rules;
+  let layoutrc = getLayoutrc(pathToLayoutrc);
+  if (!layoutrc.rules) {
+    throw new Error('layout-linter: "rules" property not found in JSON');
+  }
+  return layoutrc.rules;
 };

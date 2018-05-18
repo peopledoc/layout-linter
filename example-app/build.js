@@ -1,33 +1,36 @@
+const path = require('path');
 const fse = require('fs-extra');
 const lintLayout = require('../layout-linter');
 
 let lintedHTML = lintLayout({
+  /*
+    - optional
+    - absolute (or relative) path to json file containing rules
+    - will look for .layoutrc file inside app directory (and all subdirectories) if omitted
+  */
+  //layoutrc: '/some/custom/rules.config',
 
   /*
     - optional
-    - will look for ./.layoutrc globally if omitted
+    - absolute (or relative) path to custom layout-linter .css file
+    - can alse be set to false
+    - will use default layout-linter .css if omitted, unless set to false
   */
-
-  //layoutrc: '/some/custom/json/location',
-
-
+  //css: '/some/custom.css',
 
   /*
     - optional
-    - will use default layout-linter css if omitted
+    - the module always returns a complete HTML document, whether it is passed a snippet or a complete HTML document
+    - if this property is set to true, the module will return the linted snippet and not a complete HTML document
   */
-
-  //cssFile: '/some/custom/css,
-
-
-
+  //snippet: true,
 
   /*
     - mandatory
-    - also accepts HTML string directly
+    - absolute (or relative) path to .html file
+    - or valid HTML string (e.g. "<div>....</div>" or "<html>....</html>" etc..)
   */
-
-  source: './source.html'
+  source: path.join(__dirname, './source.html')
 });
 
 fse.writeFileSync('./index.html', lintedHTML);
