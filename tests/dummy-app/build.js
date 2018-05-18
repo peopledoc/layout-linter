@@ -13,7 +13,7 @@ let lintedHTML = lintLayout({
   /*
     - optional
     - absolute (or relative) path to custom layout-linter .css file
-    - can alse be set to false
+    - can also be set to false
     - will use default layout-linter .css if omitted, unless set to false
   */
   //css: '/some/custom.css',
@@ -21,7 +21,7 @@ let lintedHTML = lintLayout({
   /*
     - optional
     - the module always returns a complete HTML document, whether it is passed a snippet or a complete HTML document
-    - if this property is set to true, the module will return the linted snippet and not a complete HTML document
+    - if this property is set to true, and a snippet is initially passed to the module, the module will return the linted snippet and not a complete HTML document
   */
   //snippet: true,
 
