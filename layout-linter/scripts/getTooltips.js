@@ -1,16 +1,12 @@
 /*
-  use custom tooltip messages or default ones
+  - overwrites some/all of the default tooltip messages with custom ones (if custom ones present)
+  - returns updated tooltip messages
 */
 
 const defaultTooltips = require('../defaults/tooltips.json');
-const defaultPathToLayoutrc = '.layoutrc';
-
-const fse = require('fs-extra');
-const glob = require('glob');
+const getLayoutrc = require('./getLayoutrc');
 
 module.exports = function(pathToLayoutrc) {
-  pathToLayoutrc = pathToLayoutrc || glob.sync(defaultPathToLayoutrc)[0];
-  const layoutRcJson = fse.readFileSync(pathToLayoutrc).toString('utf-8');
-  const { tooltips } = JSON.parse(layoutRcJson);
-  return Object.assign(defaultTooltips, tooltips);
+  let layoutrc = getLayoutrc(pathToLayoutrc);
+  return Object.assign(defaultTooltips, layoutrc.tooltips);
 };

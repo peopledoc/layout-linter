@@ -21,4 +21,6 @@ module.exports = function(options) {
       }
     });
   });
+
+  return `<!DOCTYPE html><html>${$('html').html()}</html>`;
 };
