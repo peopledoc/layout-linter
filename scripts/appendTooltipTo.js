@@ -2,6 +2,8 @@ module.exports = function($el, errors, tooltipId) {
   let $body = $el.closest('body');
   let existingTooltipId = $el.attr('layout-linter-tooltip-id');
 
+  let $tooltip;
+
   if (existingTooltipId) {
     $tooltip = $body.find(`#${existingTooltipId}`);
   } else {

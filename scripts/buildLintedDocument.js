@@ -1,15 +1,10 @@
 const getSourceHtml = require('./getSourceHtml.js');
-const getRules = require('./getRules.js');
-const getTooltips = require('./getTooltips.js');
 const buildVirtualDom = require('./buildVirtualDom.js');
 const errorMessagesFor = require('./errorMessagesFor.js');
 const appendTooltipTo = require('./appendTooltipTo.js');
 
-module.exports = function(options) {
-  const sourceHTML = getSourceHtml(options.source);
-  const rules = getRules(options.layoutrc);
-  const tooltips = getTooltips(options.layoutrc);
-
+module.exports = function(pathToHtmlOrHtmlString, rules, tooltips) {
+  const sourceHTML = getSourceHtml(pathToHtmlOrHtmlString);
   const $ = buildVirtualDom(sourceHTML);
 
   rules.forEach((rule, ruleIndex)=> {

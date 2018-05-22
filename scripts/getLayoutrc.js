@@ -3,22 +3,24 @@
   - if omitted, it will look for .layoutrc file (json) inside the app directory and all of its subdirectories
   - converts the json structure found inside the file into a js object and returns it
 */
-
-const glob = require('glob');
-const path = require('path');
-const getRootAppFileContents = require('./getRootAppFileContents');
-
-const rootAppDir = path.parse(process.mainModule.filename).dir;
-const globFindPattern = `${rootAppDir}/**/.layoutrc`;
-const globIgnorePattern = '/**/node_modules/**/.layoutrc';
+const rootFolder = require('./dir').root;
+const findPathTo = require('./findPathTo');
+const getFileContents = require('./getFileContents');
 
 module.exports = function(pathToLayoutrc) {
+  // if no explicit path to .layoutrc is passed by the user
   if (!pathToLayoutrc) {
-    pathToLayoutrc = glob.sync(globFindPattern, { ignore: globIgnorePattern })[0];
+    // look for .layoutrc across all folders, recursively, ignoring /node_modules directories
+    pathToLayoutrc = findPathTo('.layoutrc', {
+      inside: rootFolder,
+      ignore: 'node_modules'
+    })[0]; // only use first occurence of .layoutrc
+
     if (!pathToLayoutrc) {
-      throw new Error('layout-linter: .layoutrc file not found');
+      throw new Error('layout-linter | getLayoutrc | could not locate .layoutrc file');
     }
   }
-  let layoutrc = getRootAppFileContents(pathToLayoutrc);
-  return JSON.parse(layoutrc);
+
+  // return file contents
+  return JSON.parse(getFileContents(pathToLayoutrc));
 };

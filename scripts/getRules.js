@@ -1,7 +1,6 @@
 /*
   - returns the "rules" key (array) found in the object returned by getLayoutrc()
 */
-
 const getLayoutrc = require('./getLayoutrc');
 
 module.exports = function(pathToLayoutrc) {

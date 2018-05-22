@@ -4,16 +4,20 @@
   "description": "Lint your HTML layouts",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "LAYOUT_LINTER_ENV='test' mocha ./tests/modules/*.js"
   },
   "dependencies": {
-    "fs-extra": "^4.0.2",
+    "app-root-path": "^2.1.0",
+    "fs-extra": "^6.0.1",
     "glob": "^7.1.2",
-    "html": "^1.0.0",
     "jquery": "^3.2.1",
     "jsdom": "^11.5.1"
   },
   "engines": {
     "node": ">= 8"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
   }
 }

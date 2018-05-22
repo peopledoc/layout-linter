@@ -4,9 +4,17 @@ install:
 	npm install
 
 
-test:
-	rm -Rf ./index.html
-	node ./tests/dummy-app/build
-	open -na "Google Chrome" --args --incognito http://127.0.0.1:8080/
+run-demo:
 	clear
+	node ./demo/build
+	open -na "Google Chrome" --args --incognito http://127.0.0.1:8080/
 	http-server
+
+
+test:
+	clear
+	npm run test
+
+test-debug:
+	clear
+	LAYOUT_LINTER_DEBUG='true' npm run test
