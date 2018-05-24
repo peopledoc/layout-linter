@@ -12,8 +12,72 @@
 
 ## how to use
 
-- go to your app's folder and run `npm install layout-linter` **[NOT published on npm yet]**
-- create [a json file containing your own custom linting rules](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc)
+- go to your app's folder and run `npm install github@peopledoc/layout-linter`
+- create a json file containing your own custom linting rules
+- these linting rules are based on CSS selectors ([read more about them here](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors)), and can be as generic as the name of a tag (e.g. `div`) or very elaborate.
+
+- here is a guide on how to set up the contents of such a json file:
+
+```
+{
+  "rules": [{
+
+    "selector": /*
+                  a CSS selector indicating the element(s) that will be tested
+                  as to whether they adhere to rules below,
+
+                  e.g. ".some-class"
+                */
+
+    "is": /*
+            (rule)
+
+            a tag name indicating what type the element must be,
+
+            e.g. "img"
+          */,
+
+    "direct": /*
+                an array of CSS selectors indicating direct children the element must contain,
+
+                e.g. ["#id-x", ".class-b"]
+              */,
+
+    "contains": /*
+                  an array of CSS selectors indicating children (direct or indirect, it doesn't matter)
+                  the element must contain,
+
+                  e.g. ["#id-x", ".class-b"]
+                */,
+
+    "attr": /*
+              an array indicating attributes the element must have,
+
+              e.g. ['attr-a', 'attr-b="xx"']
+            */,
+
+    "not": {
+
+      /*
+        any of the above rules, wrapped inside this `not`, indicating that these must NOT be true/the case this time
+      */
+
+    }
+
+  }, {
+
+    "selector": "....",
+    .......
+    ....
+    .....
+
+  }]
+}
+```
+
+[click here for a real example of a .layoutrc file](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc)
+
+
 - name the file `.layoutrc` or whatever you like
 - require the linting function anywhere your like by doing `const lintLayout = require('layout-linter');`
 - use the function as follows:
