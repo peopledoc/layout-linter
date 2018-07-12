@@ -1,6 +1,11 @@
 const path = require('path');
 const fse = require('fs-extra');
-const lintLayout = require('../../index');
+const lintLayout = require('./../index');
+const pathToIndex = './index.html';
+
+if (fse.existsSync(pathToIndex)) {
+  fse.unlinkSync(pathToIndex);
+}
 
 let lintedHTML = lintLayout({
   /*
@@ -13,7 +18,7 @@ let lintedHTML = lintLayout({
   /*
     - optional
     - absolute (or relative) path to custom layout-linter .css file
-    - can also be set to false
+    - can alse be set to false
     - will use default layout-linter .css if omitted, unless set to false
   */
   //css: '/some/custom.css',
@@ -21,7 +26,7 @@ let lintedHTML = lintLayout({
   /*
     - optional
     - the module always returns a complete HTML document, whether it is passed a snippet or a complete HTML document
-    - if this property is set to true, and a snippet is initially passed to the module, the module will return the linted snippet and not a complete HTML document
+    - if this property is set to true, the module will return the linted snippet and not a complete HTML document
   */
   //snippet: true,
 
@@ -30,7 +35,7 @@ let lintedHTML = lintLayout({
     - absolute (or relative) path to .html file
     - or valid HTML string (e.g. "<div>....</div>" or "<html>....</html>" etc..)
   */
-  source: path.join(__dirname, './source.html')
+  source: './source.html'
 });
 
-fse.writeFileSync('./index.html', lintedHTML);
+fse.writeFileSync(pathToIndex, lintedHTML);
