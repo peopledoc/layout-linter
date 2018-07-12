@@ -14,6 +14,8 @@
 ## how to use
 
 - go to your app's folder and run `npm install layout-linter` **[NOT published on npm yet]**
+- create [a json file containing your own custom linting rules](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc)
+- name the file `.layoutrc` or whatever you like
 - require the linting function anywhere your like by doing `const lintLayout = require('layout-linter');` 
 - use the function as follows:
 
