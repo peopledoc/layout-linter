@@ -80,5 +80,8 @@ let lintedHTML = lintLayout({
 });
 ```
 
-## not yet
+## how to run tests
+run `make test`
+
+## not available yet
 the layout-linter cannot be called via the CLI yet
