@@ -1,14 +1,13 @@
 # layout-linter
 
-## how to contribute
+## how to install/contribute to repo
  
-- run `git@github.com:peopledoc/layout-linter.git`
+- run `git clone git@github.com:peopledoc/layout-linter.git`
 - go to `/layout-linter` and run `make install`
 - read this [document on how to write tests](https://github.com/peopledoc/layout-linter/blob/master/testing.md)
 
 ## how to demo
-- run `git@github.com:peopledoc/layout-linter.git`
-- go to `/layout-linter` and run `make install` and then run `make run-demo`
+- go to `/layout-linter` and run `make run-demo`
 - an incognito window will open up in your Chrome browser with a linted page. All errors will be marked with a red dot on that page. Hover over each dot to read the list of errors for that element.
 
 ## how to use
