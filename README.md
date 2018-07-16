@@ -51,18 +51,6 @@ let lintedHTML = lintLayout({
 
 
 
-  /*
-    - optional
-    - [Boolean]
-    - this function will always returns a complete HTML document, as a string,
-      whether it is passed an HTML snippet or a complete HTML document
-    - if this property is set to true, the function will return the linted HTML snippet
-      (as a string) and not a complete HTML document containing that snippet
-  */
-  
-  snippet: true,
-
-
 
   /*
     - mandatory
@@ -71,7 +59,22 @@ let lintedHTML = lintLayout({
     - OR a valid HTML string (e.g. "<div>....</div>" or "<html>....</html>" etc..) that you want to lint
   */
   
-  source: './source.html'
+  source: './source.html',
+  
+  
+
+
+  /*
+    - optional
+    - [Boolean]
+    - this function will always returns a complete HTML document, as a string,
+      whether it is passed an HTML snippet (fragment) or a complete HTML document
+    - if the function is passed an HTML snippet and this property is set to true, 
+      the function will return the linted HTML snippet (as a string) and not a 
+      complete HTML document containing that snippet
+  */
+  
+  snippet: true
   
   
 });
