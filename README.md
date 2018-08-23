@@ -1,6 +1,6 @@
 # layout-linter
 
-## how to install/contribute to repo
+## how to install & contribute to repo
 
 - run `git clone git@github.com:peopledoc/layout-linter.git`
 - go to `/layout-linter` and run `make install`
@@ -12,11 +12,11 @@
 
 ## how to use
 
-### install 
+### install the linter in your app
 go to your app's folder and run `npm install github@peopledoc/layout-linter`
 
 ### set up your linting rules
-- create a json file containing your own custom linting rules
+- create a file containing your own custom linting rules as a json
 - these linting rules are based on CSS selectors ([read more about them here](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors)), and can be as generic as the name of a tag (e.g. `div`) or very elaborate.
 - here is a guide on how to set up the contents of your json file:
 
@@ -25,7 +25,7 @@ go to your app's folder and run `npm install github@peopledoc/layout-linter`
   "rules": [{
     "selector": /*
                   a CSS selector indicating the element(s) that will be tested
-                  as to whether they adhere to rules below,
+                  as to whether they adhere to the rules below,
 
                   e.g. ".some-class"
                 */
@@ -39,12 +39,16 @@ go to your app's folder and run `npm install github@peopledoc/layout-linter`
           */,
 
     "direct": /*
+                (rule)
+                
                 an array of CSS selectors indicating direct children the element must contain,
 
                 e.g. ["#id-x", ".class-b"]
               */,
 
     "contains": /*
+                  (rule)
+                  
                   an array of CSS selectors indicating children (direct or indirect, it doesn't matter)
                   the element must contain,
 
@@ -52,6 +56,8 @@ go to your app's folder and run `npm install github@peopledoc/layout-linter`
                 */,
 
     "attr": /*
+              (rule)
+              
               an array indicating attributes the element must have,
 
               e.g. ['attr-a', 'attr-b="xx"']
@@ -69,16 +75,17 @@ go to your app's folder and run `npm install github@peopledoc/layout-linter`
   }, {
 
     "selector": "....",
-    .......
-    ....
+    /* rule */,
+    /* rule */,
     .....
+    ..
 
   }]
 }
 ```
 
-- [click here for a real example of a .layoutrc file](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc)
-- name the file `.layoutrc` (preferred) or whatever you like
+- [click here for a real example of such a file](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc)
+- name the file **`.layoutrc`** (**recommended**) or whatever you like
 
 ### Using the linting function
 - require the linting function anywhere your like by doing `const lintLayout = require('layout-linter');`
