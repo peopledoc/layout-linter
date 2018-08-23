@@ -1,7 +1,7 @@
 # layout-linter
 
 ## how to install/contribute to repo
- 
+
 - run `git clone git@github.com:peopledoc/layout-linter.git`
 - go to `/layout-linter` and run `make install`
 - read this [document on how to write tests](https://github.com/peopledoc/layout-linter/blob/master/testing.md)
@@ -15,13 +15,13 @@
 - go to your app's folder and run `npm install layout-linter` **[NOT published on npm yet]**
 - create [a json file containing your own custom linting rules](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc)
 - name the file `.layoutrc` or whatever you like
-- require the linting function anywhere your like by doing `const lintLayout = require('layout-linter');` 
+- require the linting function anywhere your like by doing `const lintLayout = require('layout-linter');`
 - use the function as follows:
 
 ```
 const lintLayout = require('layout-linter');
 
-let lintedHTML = lintLayout({
+let result = lintLayout({
 
 
   /*
@@ -32,7 +32,7 @@ let lintedHTML = lintLayout({
     - if omitted, the linter will look for a `.layoutrc` file anywhere inside
       your app's folder
   */
-  
+
   layoutrc: '/some/custom/rules.config',
 
 
@@ -46,7 +46,7 @@ let lintedHTML = lintLayout({
     - will use the default CSS (provided by layout-linter internally) if omitted
     - can alse be set to false, in which case no CSS will be used
   */
-  
+
   css: '/some/custom.css',
 
 
@@ -58,26 +58,52 @@ let lintedHTML = lintLayout({
     - an absolute (or relative to the curret directory) path to the .html file you want to lint
     - OR a valid HTML string (e.g. "<div>....</div>" or "<html>....</html>" etc..) that you want to lint
   */
-  
+
   source: './source.html',
-  
-  
+
+
 
 
   /*
     - optional
     - [Boolean]
-    - this function will always returns a complete HTML document, as a string,
-      whether it is passed an HTML snippet (fragment) or a complete HTML document
-    - if the function is passed an HTML snippet and this property is set to true, 
-      the function will return the linted HTML snippet (as a string) and not a 
-      complete HTML document containing that snippet
+    - the `html` key, of the object returned by this function, will always consist of a complete HTML document,
+      as a string, whether the function is passed an HTML fragment or a complete HTML document
+    - if the function is passed an HTML fragment and this property is set to true,
+      the `html` key, of the object returned by this function, will consist of the linted HTML fragment (as a string)
+      and not of a complete HTML document containing that fragment
+    - if the function is passed a complete HTML document setting this property to true or false will have no effect
   */
-  
-  snippet: true
-  
-  
+
+  fragment: true
+
+
 });
+```
+
+The function will return an object containing the following keys:
+
+```
+{
+  html: /* the linted HTML as a string */,
+
+  errors: /* the total number of errors found in HTML */,
+
+  hasErrors: /* a boolean indicating whether errors were found or not */
+
+  log: /*
+        an array of objects, each object consisting of a string, indicating the problematic element,
+        and array of error messages for that element
+
+        e.g.  [{
+                element: '<p class="this"></p>',
+                errors: ['this element has this error', 'this element has this other error', ...]
+              }, {
+                element: '<div class="that"></div>',
+                errors: ['that element has this error', 'that element has this other error', ...]
+              }]
+       */
+}
 ```
 
 ## how to run tests
