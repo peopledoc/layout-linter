@@ -12,16 +12,17 @@
 
 ## how to use
 
-- go to your app's folder and run `npm install github@peopledoc/layout-linter`
+### install 
+go to your app's folder and run `npm install github@peopledoc/layout-linter`
+
+### set up your linting rules
 - create a json file containing your own custom linting rules
 - these linting rules are based on CSS selectors ([read more about them here](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors)), and can be as generic as the name of a tag (e.g. `div`) or very elaborate.
-
-- here is a guide on how to set up the contents of such a json file:
+- here is a guide on how to set up the contents of your json file:
 
 ```
 {
   "rules": [{
-
     "selector": /*
                   a CSS selector indicating the element(s) that will be tested
                   as to whether they adhere to rules below,
@@ -59,7 +60,8 @@
     "not": {
 
       /*
-        any of the above rules, wrapped inside this `not`, indicating that these must NOT be true/the case this time
+        any of the above rules (is, direct, contains, attr), wrapped inside this `not`,
+        indicating that these must NOT be true this time
       */
 
     }
@@ -75,10 +77,10 @@
 }
 ```
 
-[click here for a real example of a .layoutrc file](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc)
+- [click here for a real example of a .layoutrc file](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc)
+- name the file `.layoutrc` (preferred) or whatever you like
 
-
-- name the file `.layoutrc` or whatever you like
+### Using the linting function
 - require the linting function anywhere your like by doing `const lintLayout = require('layout-linter');`
 - use the function as follows:
 
