@@ -7,7 +7,7 @@ if (fse.existsSync(pathToIndex)) {
   fse.unlinkSync(pathToIndex);
 }
 
-let lintedHTML = lintLayout({
+let result = lintLayout({
   /*
     - optional
     - absolute (or relative) path to json file containing rules
@@ -38,4 +38,18 @@ let lintedHTML = lintLayout({
   source: './source.html'
 });
 
-fse.writeFileSync(pathToIndex, lintedHTML);
+console.log('\n\n\n');
+console.log('========= LAYOUT-LINTER | DEMO (start) =========');
+console.log('\n\n');
+console.log('LAYOUT-LINTER | has errors = ', result.hasErrors);
+console.log('\n\n');
+console.log('LAYOUT-LINTER | errors found = ', result.errors);
+console.log('\n\n');
+console.log('LAYOUT-LINTER | log (see below)');
+console.log('\n\n');
+console.log(result.log);
+console.log('\n\n');
+console.log('=========  LAYOUT-LINTER | DEMO (end)  =========');
+console.log('\n\n\n');
+
+fse.writeFileSync(pathToIndex, result.html);

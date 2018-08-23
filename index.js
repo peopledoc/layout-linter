@@ -1,21 +1,54 @@
-const debug = require('./scripts/debug');
-
 const path = require('path');
 const getRules = require('./scripts/getRules.js');
 const getTooltips = require('./scripts/getTooltips.js');
 const getCss = require('./scripts/getCss.js');
 const getBrowserJs = require('./scripts/getBrowserJs.js');
-const buildLintedDocument = require('./scripts/buildLintedDocument.js');
-const lintedHtmlWithCssJs = require('./scripts/lintedHtmlWithCssJs.js');
+const getSourceHtml = require('./scripts/getSourceHtml.js');
+const buildVirtualDom = require('./scripts/buildVirtualDom.js');
+const errorMessagesFor = require('./scripts/errorMessagesFor.js');
+const appendTooltipTo = require('./scripts/appendTooltipTo.js');
 
 module.exports = function(options) {
   const rules = getRules(options.layoutrc);
   const tooltips = getTooltips(options.layoutrc);
+  const sourceHTML = getSourceHtml(options.source);
+  const styleTag = `<style>${getCss(options.css)}</style>`;
+  const scriptTag = `<script>${getBrowserJs()}</script>`;
+  const $ = buildVirtualDom(sourceHTML);
 
-  const pathToHtmlOrHtmlString = options.source;
-  const lintedDocument = buildLintedDocument(pathToHtmlOrHtmlString, rules, tooltips);
+  let totalNumberOfErrors = 0;
+  let log = [];
+  let html;
 
-  const linterCss = getCss(options.css);
-  const linterJs = getBrowserJs();
-  return lintedHtmlWithCssJs(lintedDocument, linterCss, linterJs, options.snippet);
+  rules.forEach((rule, ruleIndex)=> {
+    $(rule.selector).each((elIndex, el)=> {
+      let errors = errorMessagesFor($(el), rule, tooltips);
+      if (errors.length) {
+        totalNumberOfErrors += errors.length;
+        let $parent = $(el).clone().wrap('<p/>').parent();
+        $parent.children().eq(0).html('');
+        log.push({
+          element: $parent.html(),
+          errors
+        });
+        let tooltipId = `layout-linter-tooltip-${ruleIndex}-${elIndex}`;
+        appendTooltipTo($(el), errors, tooltipId);
+      }
+    });
+  });
+
+  if (options.fragment) {
+    html = `${styleTag}${$('body').html()}${scriptTag}`;
+  } else {
+    $('head').append(styleTag);
+    $('body').append(scriptTag);
+    html = `<!DOCTYPE html><html>${$('html').html()}</html>`;
+  }
+
+  return {
+    html,
+    log,
+    errors: totalNumberOfErrors,
+    hasErrors: totalNumberOfErrors > 0
+  };
 };
