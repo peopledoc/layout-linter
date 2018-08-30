@@ -7,7 +7,7 @@ const assert = require('assert');
 
 describe('testing path to layoutrc options', function() {
 
-  it('will look for .layoutrc in app folder', function() {
+  it('if layoutrc location is not defined | it will look for .layoutrc in root app folder', function() {
     createScenario({
       pathToLayoutrc: '/',
       rules: [{
@@ -22,7 +22,7 @@ describe('testing path to layoutrc options', function() {
     assert.equal($html.find('.test[layout-linter-tooltip-id]').length > 0, true, 'linted HTML based on .layoutrc rule');
   });
 
-  it('will also look for .layoutrc in all app subfolders', function() {
+  it('if layoutrc location is not defined | it will not look for .layoutrc in root app subfolders', function() {
     createScenario({
       pathToLayoutrc: '/level-1/level-2',
       rules: [{
@@ -31,13 +31,12 @@ describe('testing path to layoutrc options', function() {
       }]
     });
 
-    const lintedHTML = lintLayout({ source: '<div class="test"></div>' });
-    const $html = $(lintedHTML);
-
-    assert.equal($html.find('.test[layout-linter-tooltip-id]').length > 0, true,'linted HTML based on .layoutrc rule');
+    assert.throws(()=> {
+      lintLayout({ source: '<div class="test"></div>' });
+    }, /^Error: layout-linter | getLayoutrc | could not locate \.layoutrc file$/, 'HTML was not linted because .layoutrc was placed in a subfolder');
   });
 
-  it('will not look for .layoutrc in app/node_modules folder', function() {
+  it('if layoutrc location is not defined | it will not look for .layoutrc in app/node_modules folder', function() {
     createScenario({
       pathToLayoutrc: '/node_modules',
       rules: [{
@@ -47,11 +46,14 @@ describe('testing path to layoutrc options', function() {
     });
 
     assert.throws(()=> {
-      lintLayout({ source: '<div class="test"></div>' });
+      lintLayout({
+        source: '<div class="test"></div>',
+        layoutrc: './node_modules/.layoutrc'
+      });
     }, /^Error: layout-linter | getLayoutrc | could not locate \.layoutrc file$/, 'HTML was not linted because .layoutrc was placed in /node_modules');
   });
 
-  it('will not look for .layoutrc in app/**/node_modules folder', function() {
+  it('if layoutrc location is not defined | it will not look for .layoutrc in app/**/node_modules folder', function() {
     createScenario({
       pathToLayoutrc: '/level-1/level-2/node_modules',
       rules: [{
@@ -60,7 +62,10 @@ describe('testing path to layoutrc options', function() {
       }]
     });
     assert.throws(()=> {
-      lintLayout({ source: '<div class="test"></div>' });
+      lintLayout({
+        source: '<div class="test"></div>',
+        layoutrc: './level-1/level-2/node_modules/.layoutrc'
+      });
     }, /^Error: layout-linter | getLayoutrc | could not locate \.layoutrc file$/, 'HTML was not linted because .layoutrc was placed in /**/node_modules');
   });
 
