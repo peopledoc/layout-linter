@@ -166,7 +166,7 @@ The function will return an object containing the following keys:
 
   log: /*
         an array of objects, each object consisting of:
-          - a string, indicating the problematic element,
+          - a string, indicating the problematic element
           - an array of error messages for that element
 
         e.g.  [{
