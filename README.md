@@ -1,6 +1,6 @@
 # layout-linter
 
-## how to install & contribute to repo
+## how to install & contribute
 
 - run `git clone git@github.com:peopledoc/layout-linter.git`
 - go to `/layout-linter` and run `make install`
@@ -165,8 +165,9 @@ The function will return an object containing the following keys:
   hasErrors: /* a boolean indicating whether errors were found or not */
 
   log: /*
-        an array of objects, each object consisting of a string, indicating the problematic element,
-        and array of error messages for that element
+        an array of objects, each object consisting of:
+          - a string, indicating the problematic element,
+          - an array of error messages for that element
 
         e.g.  [{
                 element: '<p class="this"></p>',
@@ -181,6 +182,3 @@ The function will return an object containing the following keys:
 
 ## how to run tests
 run `make test`
-
-## not available yet
-the layout-linter cannot be called via the CLI yet
