@@ -13,7 +13,7 @@ module.exports = function(pathToLayoutrc) {
     // look for .layoutrc across all folders, recursively, ignoring /node_modules directories
     pathToLayoutrc = findPathTo('.layoutrc', {
       inside: rootFolder,
-      ignore: 'node_modules'
+      ignore: ['*'] // only look into root folder ignoring all subfolders
     })[0]; // only use first occurence of .layoutrc
 
     if (!pathToLayoutrc) {

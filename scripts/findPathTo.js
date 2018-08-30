@@ -6,10 +6,20 @@ module.exports = function(filename, options) {
     let list = fs.readdirSync(dir);
     list.forEach((file)=> {
       let pathToFile = `${dir}/${file}`;
-      let stat = fs.statSync(pathToFile);
-      if (stat && stat.isDirectory()) {
-        let rgxForIgnoredDir = new RegExp(`${options.ignore}$`);
-        if (!rgxForIgnoredDir.test(pathToFile)) {
+      let stat;
+
+      try {
+        stat = fs.statSync(pathToFile);
+      } catch(err) {
+        // for errors like ENAMETOOLONG
+      }
+
+      if (stat && stat.isDirectory() && (options.ignore.indexOf('*') === -1)) {
+        let mustIgnore = options.ignore.some((dirToIgnore)=> {
+          let rgxForDirToIgnore = new RegExp(`${dirToIgnore}$`);
+          return rgxForDirToIgnore.test(pathToFile);
+        });
+        if (!mustIgnore) {
           results = results.concat(find(pathToFile));
         }
       } else {

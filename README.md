@@ -40,7 +40,7 @@ go to your app's folder and run `npm install github@peopledoc/layout-linter`
 
     "direct": /*
                 (rule)
-                
+
                 an array of CSS selectors indicating direct children the element must contain,
 
                 e.g. ["#id-x", ".class-b"]
@@ -48,7 +48,7 @@ go to your app's folder and run `npm install github@peopledoc/layout-linter`
 
     "contains": /*
                   (rule)
-                  
+
                   an array of CSS selectors indicating children (direct or indirect, it doesn't matter)
                   the element must contain,
 
@@ -57,7 +57,7 @@ go to your app's folder and run `npm install github@peopledoc/layout-linter`
 
     "attr": /*
               (rule)
-              
+
               an array indicating attributes the element must have,
 
               e.g. ['attr-a', 'attr-b="xx"']
@@ -102,8 +102,8 @@ let result = lintLayout({
     - [String]
     - an absolute (or relative to the curret directory) path to a json file
       containing the linting rules
-    - if omitted, the linter will look for a `.layoutrc` file anywhere inside
-      your app's folder
+    - if omitted, the linter will look for a `.layoutrc` file in your app's
+      root folder only (it will not look for it in any of its subfolders)
   */
 
   layoutrc: '/some/custom/rules.config',

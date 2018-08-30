@@ -7,7 +7,10 @@ if (fse.existsSync(pathToIndex)) {
   fse.unlinkSync(pathToIndex);
 }
 
-let result = lintLayout({ source: './source.html' });
+let result = lintLayout({
+  source: './source.html',
+  layoutrc: './demo/.layoutrc'
+});
 
 console.log('\n\n\n');
 console.log('========= LAYOUT-LINTER | DEMO (start) =========');

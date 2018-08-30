@@ -3,14 +3,14 @@
   border-radius: 50%;
   height: 10px;
   width: 10px;
+  max-height: 100px;
   max-width: 240px;
-  margin-top: -10px;
   box-sizing: border-box;
   position: absolute;
   cursor: pointer;
   box-shadow: 1px 1px 10px -2px black;
-  max-height: 100px;
   overflow: auto;
+  z-index: 99999999999999;
 }
 
 .layout-linter-tooltip ul {
@@ -32,13 +32,13 @@
   margin-top: 0;
 }
 
-.layout-linter-tooltip:hover {
+.layout-linter-tooltip.open {
   border-radius: 0;
   height: auto;
   width: auto;
   border: 5px solid transparent;
 }
 
-.layout-linter-tooltip:hover ul{
+.layout-linter-tooltip.open ul{
   display: block;
 }
