@@ -32,13 +32,15 @@
     tooltip.style['margin-left'] = 0;
 
     var tooltipCurrentPosition = getPosition(tooltip);
+    var hiddenVertically = tooltipCurrentPosition.top + tooltipMaxHeight - windowHeight;
+    var hiddenHoriontally = tooltipCurrentPosition.left + tooltipMaxWidth - windowWidth;
 
-    if ((tooltipCurrentPosition.top + tooltipMaxHeight) > windowHeight) {
-      tooltip.style['margin-top'] = (windowHeight - tooltipMaxHeight) + 'px';
+    if (hiddenVertically > 0) {
+      tooltip.style['margin-top'] = (- hiddenVertically - tooltipTopOffset) + 'px';
     }
 
-    if ((tooltipCurrentPosition.left + tooltipMaxWidth) > windowWidth) {
-      tooltip.style['margin-left'] = (windowWidth - tooltipMaxWidth) + 'px';
+    if (hiddenHoriontally > 0) {
+      tooltip.style['margin-left'] = (- hiddenHoriontally - tooltipTopOffset) + 'px';
     }
   }
 
