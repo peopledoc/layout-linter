@@ -162,8 +162,6 @@ The function will return an object containing the following keys:
 
   errors: /* the total number of errors found in HTML */,
 
-  hasErrors: /* a boolean indicating whether errors were found or not */
-
   log: /*
         an array of objects, each object consisting of:
           - a string, indicating the problematic element
