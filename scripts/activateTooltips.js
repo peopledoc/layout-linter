@@ -1,8 +1,9 @@
 (function() {
-  // defined in ./defaults/style.css
+
+  // defined in layout-linter/defaults/style.css
   var tooltipMaxWidth = 240;
   var tooltipMaxHeight = 100;
-  var tooltipTopOffset = 10;
+  var tooltipMinimumTopOffset = 10;
 
   var tooltipClassName = 'layout-linter-tooltip';
   var tooltipTargetAttrName = 'layout-linter-tooltip-id';
@@ -36,11 +37,11 @@
     var hiddenHoriontally = tooltipCurrentPosition.left + tooltipMaxWidth - windowWidth;
 
     if (hiddenVertically > 0) {
-      tooltip.style['margin-top'] = (- hiddenVertically - tooltipTopOffset) + 'px';
+      tooltip.style['margin-top'] = (- hiddenVertically - tooltipMinimumTopOffset) + 'px';
     }
 
     if (hiddenHoriontally > 0) {
-      tooltip.style['margin-left'] = (- hiddenHoriontally - tooltipTopOffset) + 'px';
+      tooltip.style['margin-left'] = (- hiddenHoriontally - tooltipMinimumTopOffset) + 'px';
     }
   }
 
@@ -50,11 +51,11 @@
       var position  = getPosition(tooltipTarget);
 
       /*
-        tooltip is placed -{tooltipTopOffset}px above the element
+        tooltip is placed -{tooltipMinimumTopOffset}px above the element
         but if this happens to be outside the window, place it exactly over the element
       */
-      if (position.top < tooltipTopOffset) {
-        position.top = tooltipTopOffset;
+      if (position.top < tooltipMinimumTopOffset) {
+        position.top = tooltipMinimumTopOffset;
       }
 
       tooltip.style.top = position.top + 'px';

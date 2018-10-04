@@ -12,6 +12,7 @@ module.exports = function(options) {
   const rules = getRules(options.layoutrc);
   const tooltips = getTooltips(options.layoutrc);
   const sourceHTML = getSourceHtml(options.source);
+  const sourceHTMLfirst9chars = sourceHTML.replace(/\s/g, '').substring(0, 9).toLowerCase();
   const styleTag = `<style>${getCss(options.css)}</style>`;
   const scriptTag = `<script>${getBrowserJs()}</script>`;
   const $ = buildVirtualDom(sourceHTML);
@@ -37,7 +38,9 @@ module.exports = function(options) {
     });
   });
 
-  if (options.fragment) {
+  // return a fragment if the `fragment` option is set to true and
+  // only if the fragment passed is truly a fragment
+  if (options.fragment && !/^<(!doctype|html|head|body)/.test(sourceHTMLfirst9chars)) {
     html = `${styleTag}${$('body').html()}${scriptTag}`;
   } else {
     $('head').append(styleTag);
@@ -48,7 +51,6 @@ module.exports = function(options) {
   return {
     html,
     log,
-    errors: totalNumberOfErrors,
-    hasErrors: totalNumberOfErrors > 0
+    errors: totalNumberOfErrors
   };
 };
