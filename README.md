@@ -74,7 +74,7 @@ go to your app's folder and run `npm install github@peopledoc/layout-linter`
     "not": {
 
       /*
-        any of the above rules (is, direct, contains, attr), wrapped inside this `not`,
+        any of the above rules (is, direct, contains, attr, parent), wrapped inside this `not`,
         indicating that these must NOT be true this time
       */
 
