@@ -15,8 +15,6 @@ let result = lintLayout({
 console.log('\n\n\n');
 console.log('========= LAYOUT-LINTER | DEMO (start) =========');
 console.log('\n\n');
-console.log('LAYOUT-LINTER | has errors = ', result.hasErrors);
-console.log('\n\n');
 console.log('LAYOUT-LINTER | errors found = ', result.errors);
 console.log('\n\n');
 console.log('LAYOUT-LINTER | log (see below)');
