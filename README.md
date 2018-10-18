@@ -1,4 +1,4 @@
-# layout-linter
+# layout-linter [![CircleCI](https://circleci.com/gh/peopledoc/layout-linter.svg?style=svg)](https://circleci.com/gh/peopledoc/layout-linter)
 
 ## how to install & contribute
 
