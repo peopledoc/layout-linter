@@ -23,7 +23,7 @@ go to your app's folder and run `npm install github@peopledoc/layout-linter`
 
 ### set up your linting rules
 - create a file containing your own custom linting rules as a json
-- these linting rules are based on CSS selectors ([read more about them here](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors)), and can be as generic as the name of a tag (e.g. `div`) or very elaborate.
+- these linting rules are based on CSS selectors ([read more about them here](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors)), and can be as simple as the name of a tag (e.g. `div`) or very elaborate.
 - here is a guide on how to set up the contents of your json file:
 
 ```
@@ -96,7 +96,7 @@ go to your app's folder and run `npm install github@peopledoc/layout-linter`
     "not": {
 
       /*
-        any of the above rules (is, direct, contains, attr, parent), wrapped inside this `not`,
+        any of the above rules (is, direct, contains, attr, parent, parents, sibling), wrapped inside this `not`,
         indicating that these must NOT be true this time
       */
 
