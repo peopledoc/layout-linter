@@ -209,4 +209,8 @@ The function will return an object containing the following keys:
 ```
 
 ## how to run tests
-run `make test`
+run
+
+```
+make test
+```

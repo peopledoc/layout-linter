@@ -1,5 +1,5 @@
 /*
-  - returns the "rules" key (array) found in the object returned by getLayoutrc()
+  returns the "rules" key (array) found in the object returned by getLayoutrc()
 */
 const getLayoutrc = require('./getLayoutrc');
 

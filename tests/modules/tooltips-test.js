@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
@@ -19,7 +20,7 @@ const DATA_FOR_BROWSER =  {
 };
 
 describe('testing tooltips Js', function() {
-  it('shows, hides and positions tooltips correctly', async ()=> {
+  it('shows, hides and positions tooltips correctly', async () => {
     createScenario({
       relativePathToRulesFile: '/.layoutrc',
       rules: [{

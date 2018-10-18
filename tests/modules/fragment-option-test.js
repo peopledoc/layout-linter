@@ -1,7 +1,8 @@
+/* eslint-env mocha */
+
 const assert = require('assert');
 
 const createScenario = require('../helpers/createScenario');
-const $ = require('../helpers/$');
 const lintLayout = require('../../index');
 
 describe('testing fragment option', function() {
@@ -36,14 +37,14 @@ describe('testing fragment option', function() {
       <html>
         <head>
           <meta charset="UTF-8">
-          <style> .+ <\/style>
+          <style> .+ </style>
         </head>
         <body>
           <div id="some-original-element"></div>
           <div class="test" .+
-          <script> .+ <\/script>
-        <\/body>
-      <\/html>
+          <script> .+ </script>
+        </body>
+      </html>
     `;
     let expectedHTMLWithoutSpacesRegexPattern = expectedHTMLRegexPattern.replace(/\s/g, '');
     let expectedHTMLWithoutSpacesRegexp = new RegExp(expectedHTMLWithoutSpacesRegexPattern);
@@ -74,14 +75,14 @@ describe('testing fragment option', function() {
       <!DOCTYPE html>
       <html>
         <head>
-          <style> .+ <\/style>
+          <style> .+ </style>
         </head>
         <body>
           <div id="some-original-element"></div>
           <div class="test" .+
-          <script> .+ <\/script>
-        <\/body>
-      <\/html>
+          <script> .+ </script>
+        </body>
+      </html>
     `;
     let expectedHTMLWithoutSpacesRegexPattern = expectedHTMLRegexPattern.replace(/\s/g, '');
     let expectedHTMLWithoutSpacesRegexp = new RegExp(expectedHTMLWithoutSpacesRegexPattern);
@@ -109,10 +110,10 @@ describe('testing fragment option', function() {
     let resultWithoutSpaces = result.html.replace(/\s/g, '');
 
     let expectedHTMLRegexPattern = `
-      ^ <style> .+ <\/style>
+      ^ <style> .+ </style>
         <div id="some-original-element"></div>
         <div class="test" .+
-        <script> .+ <\/script>
+        <script> .+ </script>
     `;
     let expectedHTMLWithoutSpacesRegexPattern = expectedHTMLRegexPattern.replace(/\s/g, '');
     let expectedHTMLWithoutSpacesRegexp = new RegExp(expectedHTMLWithoutSpacesRegexPattern);
@@ -147,14 +148,14 @@ describe('testing fragment option', function() {
       <!DOCTYPE html>
       <html>
         <head>
-          <style> .+ <\/style>
+          <style> .+ </style>
         </head>
         <body>
           <div id="some-original-element"></div>
           <div class="test" .+
-          <script> .+ <\/script>
-        <\/body>
-      <\/html>
+          <script> .+ </script>
+        </body>
+      </html>
     `;
     let expectedHTMLWithoutSpacesRegexPattern = expectedHTMLRegexPattern.replace(/\s/g, '');
     let expectedHTMLWithoutSpacesRegexp = new RegExp(expectedHTMLWithoutSpacesRegexPattern);
@@ -188,14 +189,14 @@ describe('testing fragment option', function() {
       <!DOCTYPE html>
       <html>
         <head>
-          <style> .+ <\/style>
+          <style> .+ </style>
         </head>
         <body>
           <div id="some-original-element"></div>
           <div class="test" .+
-          <script> .+ <\/script>
-        <\/body>
-      <\/html>
+          <script> .+ </script>
+        </body>
+      </html>
     `;
     let expectedHTMLWithoutSpacesRegexPattern = expectedHTMLRegexPattern.replace(/\s/g, '');
     let expectedHTMLWithoutSpacesRegexp = new RegExp(expectedHTMLWithoutSpacesRegexPattern);
@@ -228,14 +229,14 @@ describe('testing fragment option', function() {
       <!DOCTYPE html>
       <html>
         <head>
-          <style> .+ <\/style>
+          <style> .+ </style>
         </head>
         <body>
           <div id="some-original-element"></div>
           <div class="test" .+
-          <script> .+ <\/script>
-        <\/body>
-      <\/html>
+          <script> .+ </script>
+        </body>
+      </html>
     `;
     let expectedHTMLWithoutSpacesRegexPattern = expectedHTMLRegexPattern.replace(/\s/g, '');
     let expectedHTMLWithoutSpacesRegexp = new RegExp(expectedHTMLWithoutSpacesRegexPattern);
@@ -269,14 +270,14 @@ describe('testing fragment option', function() {
       <!DOCTYPE html>
       <html>
         <head>
-          <style> .+ <\/style>
+          <style> .+ </style>
         </head>
         <body>
           <div id="some-original-element"></div>
           <div class="test" .+
-          <script> .+ <\/script>
-        <\/body>
-      <\/html>
+          <script> .+ </script>
+        </body>
+      </html>
     `;
     let expectedHTMLWithoutSpacesRegexPattern = expectedHTMLRegexPattern.replace(/\s/g, '');
     let expectedHTMLWithoutSpacesRegexp = new RegExp(expectedHTMLWithoutSpacesRegexPattern);

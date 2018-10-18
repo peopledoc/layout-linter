@@ -1,4 +1,3 @@
-const path = require('path');
 const getRules = require('./scripts/getRules.js');
 const getTooltips = require('./scripts/getTooltips.js');
 const getCss = require('./scripts/getCss.js');

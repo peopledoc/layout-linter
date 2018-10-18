@@ -1,3 +1,5 @@
+/* eslint-env mocha */
+
 const assert = require('assert');
 
 const createScenario = require('../helpers/createScenario');
