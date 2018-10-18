@@ -1,3 +1,4 @@
+/* eslint-env browser */
 (function() {
 
   // defined in layout-linter/defaults/style.css
@@ -65,7 +66,7 @@
         adjustOpenTooltip(tooltip);
       }
     });
-  };
+  }
 
   document.addEventListener('click', function(e) {
     e = e || window.event;

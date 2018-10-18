@@ -1,4 +1,3 @@
-const path = require('path');
 const fse = require('fs-extra');
 const lintLayout = require('./../index');
 const pathToIndex = './index.html';
@@ -12,6 +11,7 @@ let result = lintLayout({
   layoutrc: './demo/.layoutrc'
 });
 
+/* eslint-disable no-console */
 console.log('\n\n\n');
 console.log('========= LAYOUT-LINTER | DEMO (start) =========');
 console.log('\n\n');

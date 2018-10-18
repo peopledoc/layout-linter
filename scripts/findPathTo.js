@@ -24,7 +24,7 @@ module.exports = function(filename, options) {
         }
       } else {
         let escapedFilename = filename.replace(/\./g, '\\.');
-        let rgxForSearchedFilename = new RegExp(`\/${escapedFilename}$`);
+        let rgxForSearchedFilename = new RegExp(`/${escapedFilename}$`);
         if (rgxForSearchedFilename.test(pathToFile)) {
           results.push(pathToFile);
         }
