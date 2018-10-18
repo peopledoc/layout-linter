@@ -1,14 +1,18 @@
 {
-  "parent": "parent must be {{placeholder}}",
+  "parents": "element must have parent {{placeholder}}",
+  "parent": "element must have direct parent {{placeholder}}",
   "is": "tag must be a &lt;{{placeholder}}&gt;",
   "direct": "element must contain this direct child: {{placeholder}}",
   "contains": "element must contain this child: {{placeholder}}",
   "attr": "element must have this attribute: {{placeholder}}",
+  "sibling": "element must have this sibling: {{placeholder}}",
   "not": {
-    "parent": "parent must not be {{placeholder}}",
+    "parents": "element must not have parent {{placeholder}}",
+    "parent": "element must not have direct parent {{placeholder}}",
     "is": "tag must not be a &lt;{{placeholder}}&gt;",
     "direct": "element must not contain this direct child: {{placeholder}}",
     "contains": "element must not contain this child: {{placeholder}}",
-    "attr": "element must not have this attribute: {{placeholder}}"
+    "attr": "element must not have this attribute: {{placeholder}}",
+    "sibling": "element must not have this sibling: {{placeholder}}"
   }
 }

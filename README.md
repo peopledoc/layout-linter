@@ -62,11 +62,19 @@ go to your app's folder and run `npm install github@peopledoc/layout-linter`
 
               e.g. ['attr-a', 'attr-b="xx"']
             */,
-            
+
     "parent": /*
                 (rule)
 
-                a CSS selector indicating a parent (direct or indirect) that the linted element must have
+                a CSS selector indicating a direct parent that the linted element must have
+
+                e.g. '.some-parent'
+              */,
+
+    "parents": /*
+                (rule)
+
+                an array of CSS selectors indicating a set of (direct or indirect) parents that the linted element must have
 
                 e.g. '.some-parent'
               */,
