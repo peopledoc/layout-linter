@@ -17,12 +17,14 @@ describe('testing linting rules', function() {
         direct: ['.direct-1', '.direct-2'],
         contains: ['.contains-1', '.contains-2'],
         attr: ['attr-a', 'attr-b="something"'],
+        parents: ['.parent-c', '.parent-d'],
         not: {
           is: 'div',
           parent: '.parent-a',
           direct: ['.direct-3', '.direct-4'],
           contains: ['.contains-3', '.contains-4'],
-          attr: ['attr-c', 'attr-d="something"']
+          attr: ['attr-c', 'attr-d="something"'],
+          parents: ['.parent-a', '.parent-b']
         }
       }]
     });
@@ -30,7 +32,7 @@ describe('testing linting rules', function() {
     const result = lintLayout({
       source: `
         <html>
-          <body>
+          <body class="parent-b">
             <div class="parent-a">
               <div class="test" attr-b="something else" attr-c attr-d="something else">
                 <div>
@@ -62,7 +64,9 @@ describe('testing linting rules', function() {
 
     assert.equal($linted.length, 1, 'element was linted');
     assert.ok(hasTooltipWith('tag must be a &lt;section&gt;'), '"is" rule works');
-    assert.ok(hasTooltipWith('parent must be .parent-b'), '"parent" rule works');
+    assert.ok(hasTooltipWith('element must have direct parent .parent-b'), '"parent" rule works');
+    assert.ok(hasTooltipWith('element must have parent .parent-c'), '"parents" rule works');
+    assert.ok(hasTooltipWith('element must have parent .parent-d'), '"parents" rule works');
     assert.ok(hasTooltipWith('element must contain this direct child: .direct-1'), '"direct" rule works');
     assert.ok(hasTooltipWith('element must contain this direct child: .direct-2'), '"direct" rule works');
     assert.ok(hasTooltipWith('element must contain this child: .contains-1'), '"contains" rule works');
@@ -70,12 +74,14 @@ describe('testing linting rules', function() {
     assert.ok(hasTooltipWith('element must have this attribute: attr-a'), '"attr" rule works');
     assert.ok(hasTooltipWith('element must have this attribute: attr-b="something"'), '"attr" rule works');
     assert.ok(hasTooltipWith('tag must not be a &lt;div&gt;'), '"not is" rule works');
-    assert.ok(hasTooltipWith('parent must not be .parent-a'), '"not parent" rule works');
+    assert.ok(hasTooltipWith('element must not have direct parent .parent-a'), '"not parent" rule works');
     assert.ok(hasTooltipWith('element must not contain this direct child: .direct-3'), '"not direct" rule works');
     assert.ok(hasTooltipWith('element must not contain this direct child: .direct-4'), '"not direct" rule works');
     assert.ok(hasTooltipWith('element must not contain this child: .contains-3'), '"not contains" rule works');
     assert.ok(hasTooltipWith('element must not contain this child: .contains-4'), '"not contains" rule works');
     assert.ok(hasTooltipWith('element must not have this attribute: attr-c'), '"not attr" rule works');
+    assert.ok(hasTooltipWith('element must not have parent .parent-a'), '"not parents" rule works');
+    assert.ok(hasTooltipWith('element must not have parent .parent-b'), '"not parents" rule works');
   });
 
   it('will not add a tooltip to the problematic element for a rule that was obeyed', function() {

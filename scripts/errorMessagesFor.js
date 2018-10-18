@@ -17,6 +17,14 @@ module.exports = function($el, rule, tooltips) {
     }
   }
 
+  if (rule.parents) {
+    rule.parents.forEach((parentSelector)=> {
+      if (!$el.closest(parentSelector).length) {
+        errors.push(buildErrorMessageFor(parentSelector, tooltips.parents));
+      }
+    });
+  }
+
   if (rule.direct) {
     rule.direct.forEach((childSelector)=> {
       if (!$el.find(`>${childSelector}`).length) {
@@ -41,11 +49,27 @@ module.exports = function($el, rule, tooltips) {
     });
   }
 
+  if (rule.sibling) {
+    rule.sibling.forEach((siblingSelector)=> {
+      if (!$el.siblings(siblingSelector).length) {
+        errors.push(buildErrorMessageFor(siblingSelector, tooltips.sibling));
+      }
+    });
+  }
+
   if (rule.not) {
     if (rule.not.is) {
       if ($el.is(rule.not.is)) {
         errors.push(buildErrorMessageFor(rule.not.is, tooltips.not.is));
       }
+    }
+
+    if (rule.not.parents) {
+      rule.not.parents.forEach((parentSelector)=> {
+        if ($el.closest(parentSelector).length) {
+          errors.push(buildErrorMessageFor(parentSelector, tooltips.not.parents));
+        }
+      });
     }
 
     if (rule.not.parent) {
@@ -74,6 +98,14 @@ module.exports = function($el, rule, tooltips) {
       rule.not.attr.forEach((attrSelector)=> {
         if ($el.is(`[${attrSelector}]`)) {
           errors.push(buildErrorMessageFor(attrSelector, tooltips.not.attr));
+        }
+      });
+    }
+
+    if (rule.not.sibling) {
+      rule.not.sibling.forEach((siblingSelector)=> {
+        if ($el.siblings(siblingSelector).length) {
+          errors.push(buildErrorMessageFor(siblingSelector, tooltips.not.sibling));
         }
       });
     }
