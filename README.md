@@ -7,8 +7,9 @@
 - read this [document on how to write tests](https://github.com/peopledoc/layout-linter/blob/master/testing.md)
 
 ## how to demo
+- close all current Chrome incognito windows
 - go to `/layout-linter` and run `make run-demo`
-- an incognito window will open up in your Chrome browser with a linted page. All errors will be marked with a red dot on that page. Hover over each dot to read the list of errors for that element.
+- an incognito window will open up in your Chrome browser with an HTML page built using [Bootstrap](https://github.com/twbs/bootstrap). The page will have been linted using [the following set of rules](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc) (based on the [Bootstrap](https://github.com/twbs/bootstrap) framework HTML rules)
 
 ## how to use
 
@@ -76,7 +77,15 @@ go to your app's folder and run `npm install github@peopledoc/layout-linter`
 
                 an array of CSS selectors indicating a set of (direct or indirect) parents that the linted element must have
 
-                e.g. '.some-parent'
+                e.g. ['.some-parent-a', '.some-parent-b']
+              */,
+              
+     "sibling": /*
+                (rule)
+
+                an array of CSS selectors indicating a set of siblings that the linted element must have
+
+                e.g. ['.some-sibling-a', '.some-sibling-b']
               */,
 
     "not": {
