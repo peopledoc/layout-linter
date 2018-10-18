@@ -11,6 +11,7 @@
 - go to `/layout-linter` and run `make run-demo`
 - an incognito window will open up in your Chrome browser with an HTML page built using [Bootstrap](https://github.com/twbs/bootstrap). The page will have been linted using [the following set of rules](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc) (based on the [Bootstrap](https://github.com/twbs/bootstrap) framework HTML rules)
 
+### screenshot of demo page:
 ![demo screenshot](https://github.com/peopledoc/layout-linter/blob/master/assets/demo.png)
 
 ## how to use
