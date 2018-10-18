@@ -1,6 +1,6 @@
 # layout-linter [![CircleCI](https://circleci.com/gh/peopledoc/layout-linter.svg?style=svg)](https://circleci.com/gh/peopledoc/layout-linter)
 
-:bulb: This npm module will use your own custom rules to lint an HTML and make sure it follows your HTML conventions (classes, attributes, tags types, structure etc.)
+:bulb: This npm module will use your own custom rules to lint an HTML page and make sure it follows your HTML/CSS conventions (classes, attributes, tags types, structure etc.)
 
 ## how to install & contribute
 
