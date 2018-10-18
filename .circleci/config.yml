@@ -5,6 +5,7 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/layout-linter
     docker:
       # specify the version you desire here
       - image: circleci/node:8.0
