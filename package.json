@@ -1,6 +1,6 @@
 {
   "name": "layout-linter",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Lint your HTML layouts",
   "license": "MIT",
   "scripts": {
