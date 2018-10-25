@@ -14,7 +14,3 @@ run-demo:
 test:
 	clear
 	npm run test
-
-test-debug:
-	clear
-	LAYOUT_LINTER_DEBUG='true' npm run test
