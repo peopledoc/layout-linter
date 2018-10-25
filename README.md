@@ -61,7 +61,7 @@ go to your app's folder and run `npm install github@peopledoc/layout-linter`
                   e.g. ["#id-x", ".class-b"]
                 */,
 
-    "attr": /*
+    "attrs": /*
               (rule)
 
               an array indicating attributes the element must have,
@@ -84,8 +84,8 @@ go to your app's folder and run `npm install github@peopledoc/layout-linter`
 
                 e.g. ['.some-parent-a', '.some-parent-b']
               */,
-              
-     "sibling": /*
+
+     "siblings": /*
                 (rule)
 
                 an array of CSS selectors indicating a set of siblings that the linted element must have
@@ -96,7 +96,7 @@ go to your app's folder and run `npm install github@peopledoc/layout-linter`
     "not": {
 
       /*
-        any of the above rules (is, direct, contains, attr, parent, parents, sibling), wrapped inside this `not`,
+        any of the above rules (is, direct, contains, attrs, parent, parents, siblings), wrapped inside this `not`,
         indicating that these must NOT be true this time
       */
 
