@@ -14,10 +14,10 @@
     "parent": ".input-group"
   }, {
     "selector": "input#email",
-    "attr": ["type='email'"]
+    "attrs": ["type='email'"]
   }, {
     "selector": "input[type='text']",
-    "attr": ["placeholder"]
+    "attrs": ["placeholder"]
   }, {
     "selector": "select",
     "not": {
@@ -25,9 +25,9 @@
     }
   }, {
     "selector": "input",
-    "sibling": ["label"]
+    "siblings": ["label"]
   }, {
     "selector": "a",
-    "attr": ["href"]
+    "attrs": ["href"]
   }]
 }
