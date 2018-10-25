@@ -21,8 +21,14 @@
   function getPosition(element) {
     var box = element.getBoundingClientRect();
     return {
-      top: box.top + window.pageYOffset - document.documentElement.clientTop,
-      left: box.left + window.pageXOffset - document.documentElement.clientLeft
+      relative: {
+        top: box.top,
+        left: box.left
+      },
+      absolute: {
+        top: box.top + window.pageYOffset - document.documentElement.clientTop,
+        left: box.left + window.pageXOffset - document.documentElement.clientLeft
+      }
     };
   }
 
@@ -34,8 +40,9 @@
     tooltip.style['margin-left'] = 0;
 
     var tooltipCurrentPosition = getPosition(tooltip);
-    var hiddenVertically = tooltipCurrentPosition.top + tooltipMaxHeight - windowHeight;
-    var hiddenHoriontally = tooltipCurrentPosition.left + tooltipMaxWidth - windowWidth;
+
+    var hiddenVertically = tooltipCurrentPosition.relative.top + tooltipMaxHeight - windowHeight;
+    var hiddenHoriontally = tooltipCurrentPosition.relative.left + tooltipMaxWidth - windowWidth;
 
     if (hiddenVertically > 0) {
       tooltip.style['margin-top'] = (- hiddenVertically - tooltipMinimumTopOffset) + 'px';
@@ -55,12 +62,12 @@
         tooltip is placed -{tooltipMinimumTopOffset}px above the element
         but if this happens to be outside the window, place it exactly over the element
       */
-      if (position.top < tooltipMinimumTopOffset) {
-        position.top = tooltipMinimumTopOffset;
+      if (position.absolute.top < tooltipMinimumTopOffset) {
+        position.absolute.top = tooltipMinimumTopOffset;
       }
 
-      tooltip.style.top = position.top + 'px';
-      tooltip.style.left = position.left + 'px';
+      tooltip.style.top = position.absolute.top + 'px';
+      tooltip.style.left = position.absolute.left + 'px';
 
       if (tooltip.classList.contains('open')) {
         adjustOpenTooltip(tooltip);
@@ -79,6 +86,10 @@
       target.classList.add('open');
       adjustOpenTooltip(target);
     }
+
+    setTimeout(function() {
+      positionTooltips();
+    }, 1000);
   }, false);
 
   window.addEventListener('resize', function() {
