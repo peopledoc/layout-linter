@@ -41,18 +41,18 @@ module.exports = function($el, rule, tooltips) {
     });
   }
 
-  if (rule.attr) {
-    rule.attr.forEach((attrSelector)=> {
+  if (rule.attrs) {
+    rule.attrs.forEach((attrSelector)=> {
       if (!$el.is(`[${attrSelector}]`)) {
-        errors.push(buildErrorMessageFor(attrSelector, tooltips.attr));
+        errors.push(buildErrorMessageFor(attrSelector, tooltips.attrs));
       }
     });
   }
 
-  if (rule.sibling) {
-    rule.sibling.forEach((siblingSelector)=> {
+  if (rule.siblings) {
+    rule.siblings.forEach((siblingSelector)=> {
       if (!$el.siblings(siblingSelector).length) {
-        errors.push(buildErrorMessageFor(siblingSelector, tooltips.sibling));
+        errors.push(buildErrorMessageFor(siblingSelector, tooltips.siblings));
       }
     });
   }
@@ -94,18 +94,18 @@ module.exports = function($el, rule, tooltips) {
       });
     }
 
-    if (rule.not.attr) {
-      rule.not.attr.forEach((attrSelector)=> {
+    if (rule.not.attrs) {
+      rule.not.attrs.forEach((attrSelector)=> {
         if ($el.is(`[${attrSelector}]`)) {
-          errors.push(buildErrorMessageFor(attrSelector, tooltips.not.attr));
+          errors.push(buildErrorMessageFor(attrSelector, tooltips.not.attrs));
         }
       });
     }
 
-    if (rule.not.sibling) {
-      rule.not.sibling.forEach((siblingSelector)=> {
+    if (rule.not.siblings) {
+      rule.not.siblings.forEach((siblingSelector)=> {
         if ($el.siblings(siblingSelector).length) {
-          errors.push(buildErrorMessageFor(siblingSelector, tooltips.not.sibling));
+          errors.push(buildErrorMessageFor(siblingSelector, tooltips.not.siblings));
         }
       });
     }
