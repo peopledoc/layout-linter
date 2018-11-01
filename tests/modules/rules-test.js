@@ -4,14 +4,14 @@ const assert = require('assert');
 
 const createScenario = require('../helpers/createScenario');
 const jQuery = require('../helpers/$');
-const lintLayout = require('../../index');
+const lintHtml = require('../../index');
 
-const FIRST_TOOLTIP_ID = 'layout-linter-tooltip-0-0';
+const FIRST_TOOLTIP_ID = 'html-linter-tooltip-0-0';
 
 describe('testing linting rules', function() {
   it('will add a tooltip to the problematic element for each rule that wasn\'t obeyed', function() {
     createScenario({
-      relativePathToRulesFile: '/.layoutrc',
+      relativePathToRulesFile: '/.htmllintrc',
       rules: [{
         selector: '.test',
         is: 'section',
@@ -33,7 +33,7 @@ describe('testing linting rules', function() {
       }]
     });
 
-    const result = lintLayout({
+    const result = lintHtml({
       source: `
         <html>
           <body class="parent-b">
@@ -58,7 +58,7 @@ describe('testing linting rules', function() {
     });
 
     let $ = jQuery(result.html);
-    const $linted = $(`.test[layout-linter-tooltip-id="${FIRST_TOOLTIP_ID}"]`);
+    const $linted = $(`.test[html-linter-tooltip-id="${FIRST_TOOLTIP_ID}"]`);
     const hasTooltipWith = function(msg) {
       let found = true;
       $(`#${FIRST_TOOLTIP_ID} li`).each((index, el)=> {
@@ -96,7 +96,7 @@ describe('testing linting rules', function() {
 
   it('will not add a tooltip to the problematic element for a rule that was obeyed', function() {
     createScenario({
-      relativePathToRulesFile: '/.layoutrc',
+      relativePathToRulesFile: '/.htmllintrc',
       rules: [{
         selector: '.test',
         is: 'section',
@@ -116,7 +116,7 @@ describe('testing linting rules', function() {
       }]
     });
 
-    const result = lintLayout({
+    const result = lintHtml({
       source: `
         <html>
           <body>
@@ -137,7 +137,7 @@ describe('testing linting rules', function() {
     });
 
     let $ = jQuery(result.html);
-    const $linted = $(`.test[layout-linter-tooltip-id="${FIRST_TOOLTIP_ID}"]`);
+    const $linted = $(`.test[html-linter-tooltip-id="${FIRST_TOOLTIP_ID}"]`);
     assert.equal($linted.length, 0, 'no errors were found');
   });
 });

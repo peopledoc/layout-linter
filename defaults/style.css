@@ -1,4 +1,4 @@
-.layout-linter-tooltip {
+.html-linter-tooltip {
   background-color: red;
   border-radius: 50%;
   height: 10px;
@@ -13,7 +13,7 @@
   z-index: 99999999999999;
 }
 
-.layout-linter-tooltip ul {
+.html-linter-tooltip ul {
   padding: 0 20px;
   list-style-position: outside;
   margin: 0;
@@ -21,24 +21,24 @@
   display: none;
 }
 
-.layout-linter-tooltip li {
+.html-linter-tooltip li {
   margin-top: 10px;
   color: white;
   font-family: monospace;
   font-size: 12px;
 }
 
-.layout-linter-tooltip li:first-child {
+.html-linter-tooltip li:first-child {
   margin-top: 0;
 }
 
-.layout-linter-tooltip.open {
+.html-linter-tooltip.open {
   border-radius: 0;
   height: auto;
   width: auto;
   border: 5px solid transparent;
 }
 
-.layout-linter-tooltip.open ul{
+.html-linter-tooltip.open ul{
   display: block;
 }

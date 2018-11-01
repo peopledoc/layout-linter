@@ -3,19 +3,19 @@
 const assert = require('assert');
 
 const createScenario = require('../helpers/createScenario');
-const lintLayout = require('../../index');
+const lintHtml = require('../../index');
 
 describe('testing fragment option', function() {
   it('will return whole linted HTML document when passed whole HTML document', function() {
     createScenario({
-      relativePathToRulesFile: '/.layoutrc',
+      relativePathToRulesFile: '/.htmllintrc',
       rules: [{
         selector: '.test',
         is: 'p'
       }]
     });
 
-    const result = lintLayout({
+    const result = lintHtml({
       source: `
         <html>
           <head>
@@ -54,14 +54,14 @@ describe('testing fragment option', function() {
 
   it('will return whole linted HTML document when passed an HTML fragment', function() {
     createScenario({
-      relativePathToRulesFile: '/.layoutrc',
+      relativePathToRulesFile: '/.htmllintrc',
       rules: [{
         selector: '.test',
         is: 'p'
       }]
     });
 
-    const result = lintLayout({
+    const result = lintHtml({
       source: `
         <div id="some-original-element"></div>
         <div class="test"></div>
@@ -92,14 +92,14 @@ describe('testing fragment option', function() {
 
   it('will return the linted fragment when passed a fragment, if `fragment` option is set to `true`', function() {
     createScenario({
-      relativePathToRulesFile: '/.layoutrc',
+      relativePathToRulesFile: '/.htmllintrc',
       rules: [{
         selector: '.test',
         is: 'p'
       }]
     });
 
-    const result = lintLayout({
+    const result = lintHtml({
       source: `
         <div id="some-original-element"></div>
         <div class="test"></div>
@@ -123,14 +123,14 @@ describe('testing fragment option', function() {
 
   it('will return whole linted HTML document, even if `fragment` option is set to `true`, if the "fragment" starts with <!doctype', function() {
     createScenario({
-      relativePathToRulesFile: '/.layoutrc',
+      relativePathToRulesFile: '/.htmllintrc',
       rules: [{
         selector: '.test',
         is: 'p'
       }]
     });
 
-    const result = lintLayout({
+    const result = lintHtml({
       source: `
         <!doctype html>
         <html>
@@ -165,14 +165,14 @@ describe('testing fragment option', function() {
 
   it('will return whole linted HTML document, even if `fragment` option is set to `true`, if the "fragment" starts with <html', function() {
     createScenario({
-      relativePathToRulesFile: '/.layoutrc',
+      relativePathToRulesFile: '/.htmllintrc',
       rules: [{
         selector: '.test',
         is: 'p'
       }]
     });
 
-    const result = lintLayout({
+    const result = lintHtml({
       source: `
         <html>
           <div id="some-original-element"></div>
@@ -206,14 +206,14 @@ describe('testing fragment option', function() {
 
   it('will return whole linted HTML document, even if `fragment` option is set to `true`, if the "fragment" starts with <head', function() {
     createScenario({
-      relativePathToRulesFile: '/.layoutrc',
+      relativePathToRulesFile: '/.htmllintrc',
       rules: [{
         selector: '.test',
         is: 'p'
       }]
     });
 
-    const result = lintLayout({
+    const result = lintHtml({
       source: `
         <head></head>
         <div id="some-original-element"></div>
@@ -246,14 +246,14 @@ describe('testing fragment option', function() {
 
   it('will return whole linted HTML document, even if `fragment` option is set to `true`, if the "fragment" starts with <body', function() {
     createScenario({
-      relativePathToRulesFile: '/.layoutrc',
+      relativePathToRulesFile: '/.htmllintrc',
       rules: [{
         selector: '.test',
         is: 'p'
       }]
     });
 
-    const result = lintLayout({
+    const result = lintHtml({
       source: `
         <body>
           <div id="some-original-element"></div>

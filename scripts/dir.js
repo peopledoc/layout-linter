@@ -3,7 +3,7 @@ const path = require('path');
 const pathToRootFolder = require('app-root-path').path;
 const pathToParentFolder = path.parse(process.mainModule.filename).dir;
 
-const env = process.env.LAYOUT_LINTER_ENV;
+const env = process.env.HTML_LINTER_ENV;
 
 if (env && env === 'test') {
   const pathToTestDummyApp = `${pathToRootFolder}/tests/dummy-app`;
