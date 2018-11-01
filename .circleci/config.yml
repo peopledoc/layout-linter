@@ -3,7 +3,7 @@ defaults: &defaults
     - image: circleci/node:10-browsers
       environment:
         JOBS: 2
-  working_directory: ~/layout-linter
+  working_directory: ~/html-linter
 
 version: 2
 jobs:
@@ -23,7 +23,7 @@ jobs:
           at: .
       - restore_cache:
           keys:
-            - layout-linter-node10-v1-{{ checksum "package-lock.json" }}
+            - html-linter-node10-v1-{{ checksum "package-lock.json" }}
       - run:
           name: Avoid hosts unknown for github
           command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
@@ -31,9 +31,9 @@ jobs:
           name: NPM Install
           command: npm install --non-interactive
       - save_cache:
-          key: layout-linter-node10-v1-{{ checksum "package-lock.json" }}
+          key: html-linter-node10-v1-{{ checksum "package-lock.json" }}
           paths:
-            - ~/layout-linter/node_modules
+            - ~/html-linter/node_modules
       - persist_to_workspace:
           root: .
           paths:
@@ -44,7 +44,7 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run: echo 'export PATH=~/layout-linter/node_modules/.bin:$PATH' >> $BASH_ENV
+      - run: echo 'export PATH=~/html-linter/node_modules/.bin:$PATH' >> $BASH_ENV
       - run:
           name: Run Tests
           command: npm test

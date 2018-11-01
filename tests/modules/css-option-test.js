@@ -8,7 +8,7 @@ const pathToRootFolder = require('app-root-path').path;
 const createScenario = require('../helpers/createScenario');
 const pathToParentFolder = require('../../scripts/dir').parent;
 const $ = require('../helpers/$');
-const lintLayout = require('../../index');
+const lintHtml = require('../../index');
 
 const defaultCss = fs.readFileSync(path.join(pathToRootFolder, '/defaults/style.css')).toString('utf-8');
 const defaultCssWithoutSpaces = defaultCss.replace(/\s/g, '');
@@ -16,14 +16,14 @@ const defaultCssWithoutSpaces = defaultCss.replace(/\s/g, '');
 describe('testing css option', function() {
   it('will use default css', function() {
     createScenario({
-      relativePathToRulesFile: '/.layoutrc',
+      relativePathToRulesFile: '/.htmllintrc',
       rules: [{
         selector: '.test',
         is: 'p'
       }]
     });
 
-    const result = lintLayout({ source: '<div class="test"></div>' });
+    const result = lintHtml({ source: '<div class="test"></div>' });
     const $html = $(result.html);
 
     let usedCssWithoutSpaces = $html.find('head style')[0].innerHTML.replace(/\s/g, '');
@@ -41,7 +41,7 @@ describe('testing css option', function() {
     createScenario({
       relativePathToCss,
       cssContent,
-      relativePathToRulesFile: '/.layoutrc',
+      relativePathToRulesFile: '/.htmllintrc',
       rules: [{
         selector: '.test',
         is: 'p'
@@ -50,7 +50,7 @@ describe('testing css option', function() {
 
     assert.ok(fs.existsSync(absolutePathToCss), `temporary ${relativePathToCss} was generated for testing purposes`);
 
-    const result = lintLayout({
+    const result = lintHtml({
       source: '<div class="test"></div>',
       css: relativePathToCss
     });
@@ -68,7 +68,7 @@ describe('testing css option', function() {
     createScenario({
       relativePathToCss,
       cssContent,
-      relativePathToRulesFile: '/.layoutrc',
+      relativePathToRulesFile: '/.htmllintrc',
       rules: [{
         selector: '.test',
         is: 'p'
@@ -77,7 +77,7 @@ describe('testing css option', function() {
 
     assert.ok(fs.existsSync(absolutePathToCss), `temporary ${relativePathToCss} was generated for testing purposes`);
 
-    const result = lintLayout({
+    const result = lintHtml({
       source: '<div class="test"></div>',
       css: absolutePathToCss
     });

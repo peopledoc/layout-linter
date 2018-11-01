@@ -1,12 +1,12 @@
 /*
-  returns the "rules" key (array) found in the object returned by getLayoutrc()
+  returns the "rules" key (array) found in the object returned by getHtmllintrc()
 */
-const getLayoutrc = require('./getLayoutrc');
+const getHtmllintrc = require('./getHtmllintrc');
 
-module.exports = function(pathToLayoutrc) {
-  let layoutrc = getLayoutrc(pathToLayoutrc);
-  if (!layoutrc.rules) {
-    throw new Error('layout-linter: "rules" property not found in JSON');
+module.exports = function(pathToHtmllintrc) {
+  let htmllintrc = getHtmllintrc(pathToHtmllintrc);
+  if (!htmllintrc.rules) {
+    throw new Error('html-linter: "rules" property not found in JSON');
   }
-  return layoutrc.rules;
+  return htmllintrc.rules;
 };

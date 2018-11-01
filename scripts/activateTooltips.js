@@ -1,13 +1,13 @@
 /* eslint-env browser */
 (function() {
 
-  // defined in layout-linter/defaults/style.css
+  // defined in html-linter/defaults/style.css
   var tooltipMaxWidth = 240;
   var tooltipMaxHeight = 100;
   var tooltipMinimumTopOffset = 10;
 
-  var tooltipClassName = 'layout-linter-tooltip';
-  var tooltipTargetAttrName = 'layout-linter-tooltip-id';
+  var tooltipClassName = 'html-linter-tooltip';
+  var tooltipTargetAttrName = 'html-linter-tooltip-id';
   var tooltips = document.querySelectorAll('.'+tooltipClassName);
 
   function closeTooltips() {
