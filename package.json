@@ -10,7 +10,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/peopledoc/layout-linter.git"
+    "url": "https://github.com/peopledoc/html-linter.git"
   },
   "scripts": {
     "start": "node index.js",
