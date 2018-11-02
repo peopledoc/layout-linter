@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "HTML_LINTER_ENV='test' mocha ./tests/modules/*.js",
+    "test": "LAYOUT_LINTER_ENV='test' mocha ./tests/modules/*.js",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
   },
   "dependencies": {
