@@ -7,7 +7,7 @@ module.exports = function(options) {
   fse.emptyDirSync(pathToParentFolder);
 
   if (options.relativePathToRulesFile && options.rules) {
-    // create .htmllintrc
+    // create .layoutrc
     let pathToRulesFile = path.join(pathToParentFolder, options.relativePathToRulesFile);
     let pathToRulesFileFolder = pathToRulesFile.split('/');
     pathToRulesFileFolder.pop();
@@ -35,6 +35,6 @@ module.exports = function(options) {
       fse.writeFileSync(pathToHtmlFile, options.htmlContent);
     }
   } else {
-    throw new Error('html-linter | createScenario helper : `options.relativePathToRulesFile` or `options.rules` not found');
+    throw new Error('layout-linter | createScenario helper : `options.relativePathToRulesFile` or `options.rules` not found');
   }
 };

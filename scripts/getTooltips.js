@@ -4,9 +4,9 @@
 */
 
 const defaultTooltips = require('../defaults/tooltips.json');
-const getHtmllintrc = require('./getHtmllintrc');
+const getLayoutrc = require('./getLayoutrc');
 
-module.exports = function(pathToHtmllintrc) {
-  let htmllintrc = getHtmllintrc(pathToHtmllintrc);
-  return Object.assign(defaultTooltips, htmllintrc.tooltips);
+module.exports = function(pathToLayoutrc) {
+  let layoutrc = getLayoutrc(pathToLayoutrc);
+  return Object.assign(defaultTooltips, layoutrc.tooltips);
 };

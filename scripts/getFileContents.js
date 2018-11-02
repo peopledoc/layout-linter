@@ -10,7 +10,7 @@ module.exports = function(pathToFile) {
   }
   // if the file is still not found
   if (!fse.existsSync(pathToFile)) {
-    throw new Error(`html-linter | getFileContents | could not locate file: ${pathToFile}`);
+    throw new Error(`layout-linter | getFileContents | could not locate file: ${pathToFile}`);
   } else { // else return its contents
     return fse.readFileSync(pathToFile).toString('utf-8');
   }

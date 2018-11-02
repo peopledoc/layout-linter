@@ -8,12 +8,12 @@ const pathToRootFolder = require('app-root-path').path;
 const createScenario = require('../helpers/createScenario');
 const pathToParentFolder = require('../../scripts/dir').parent;
 const $ = require('../helpers/$');
-const lintHtml = require('../../index');
+const lintLayout = require('../../index');
 
 const pathToLintedHTMLfile = path.join(pathToParentFolder, 'linted.html');
 
 const DATA_FOR_BROWSER =  {
-  TOOLTIP_ID_ATTR: 'html-linter-tooltip-id',
+  TOOLTIP_ID_ATTR: 'layout-linter-tooltip-id',
   TOOLTIP_MIN_TOP: 10,
   WITH_MIN_TOP_ID: 'with-min-top',
   WITHOUT_MIN_TOP_ID: 'without-min-top'
@@ -22,14 +22,14 @@ const DATA_FOR_BROWSER =  {
 describe('testing tooltips Js', function() {
   it('shows, hides and positions tooltips correctly', async ()=> {
     createScenario({
-      relativePathToRulesFile: '/.htmllintrc',
+      relativePathToRulesFile: '/.layoutrc',
       rules: [{
         selector: '.test',
         is: 'p'
       }]
     });
 
-    const result = lintHtml({
+    const result = lintLayout({
       source: `
         <div class="test" id="${DATA_FOR_BROWSER.WITHOUT_MIN_TOP_ID}" style="float:left;"></div>
         <div class="test" id="${DATA_FOR_BROWSER.WITH_MIN_TOP_ID}" style="float:left; margin-top: ${DATA_FOR_BROWSER.TOOLTIP_MIN_TOP + 1}px;"></div>

@@ -8,8 +8,8 @@ const errorMessagesFor = require('./scripts/errorMessagesFor.js');
 const appendTooltipTo = require('./scripts/appendTooltipTo.js');
 
 module.exports = function(options) {
-  const rules = getRules(options.htmllintrc);
-  const tooltips = getTooltips(options.htmllintrc);
+  const rules = getRules(options.layoutrc);
+  const tooltips = getTooltips(options.layoutrc);
   const sourceHTML = getSourceHtml(options.source);
   const sourceHTMLfirst9chars = sourceHTML.replace(/\s/g, '').substring(0, 9).toLowerCase();
   const styleTag = `<style>${getCss(options.css)}</style>`;
@@ -31,7 +31,7 @@ module.exports = function(options) {
           element: $parent.html(),
           errors
         });
-        let tooltipId = `html-linter-tooltip-${ruleIndex}-${elIndex}`;
+        let tooltipId = `layout-linter-tooltip-${ruleIndex}-${elIndex}`;
         appendTooltipTo($(el), errors, tooltipId);
       }
     });

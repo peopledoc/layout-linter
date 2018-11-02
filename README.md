@@ -1,25 +1,25 @@
-# html-linter [![CircleCI](https://circleci.com/gh/peopledoc/html-linter.svg?style=svg)](https://circleci.com/gh/peopledoc/html-linter)
+# layout-linter [![CircleCI](https://circleci.com/gh/peopledoc/layout-linter.svg?style=svg)](https://circleci.com/gh/peopledoc/layout-linter)
 
 :bulb: This npm module will use your own custom rules to lint an HTML page and make sure it follows your HTML/CSS conventions (classes, attributes, tags, structure etc.)
 
 ## how to install & contribute
 
-- run `git clone git@github.com:peopledoc/html-linter.git`
-- go to `/html-linter` and run `make install`
-- read this [document on how to write tests](https://github.com/peopledoc/html-linter/blob/master/testing.md)
+- run `git clone git@github.com:peopledoc/layout-linter.git`
+- go to `/layout-linter` and run `make install`
+- read this [document on how to write tests](https://github.com/peopledoc/layout-linter/blob/master/testing.md)
 
 ## how to demo
 - close all current Chrome incognito windows
-- go to `/html-linter` and run `make run-demo`
-- an incognito window will open up in your Chrome browser with an HTML page built using [Bootstrap](https://github.com/twbs/bootstrap). The page will have been linted using [the following set of rules](https://github.com/peopledoc/html-linter/blob/master/demo/.htmllintrc) (based on the [Bootstrap](https://github.com/twbs/bootstrap) framework HTML rules)
+- go to `/layout-linter` and run `make run-demo`
+- an incognito window will open up in your Chrome browser with an HTML page built using [Bootstrap](https://github.com/twbs/bootstrap). The page will have been linted using [the following set of rules](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc) (based on the [Bootstrap](https://github.com/twbs/bootstrap) framework HTML rules)
 
 ### screenshot of demo page:
-![demo screenshot](https://github.com/peopledoc/html-linter/blob/master/assets/demo.png)
+![demo screenshot](https://github.com/peopledoc/layout-linter/blob/master/assets/demo.png)
 
 ## how to use
 
 ### install the linter in your app
-go to your app's folder and run `npm install github@peopledoc/html-linter`
+go to your app's folder and run `npm install github@peopledoc/layout-linter`
 
 ### set up your linting rules
 - create a file containing your own custom linting rules as a json
@@ -114,17 +114,17 @@ go to your app's folder and run `npm install github@peopledoc/html-linter`
 }
 ```
 
-- [click here for a real example of such a file](https://github.com/peopledoc/html-linter/blob/master/demo/.htmllintrc)
-- name the file **`.htmllintrc`** (**recommended**) or whatever you like
+- [click here for a real example of such a file](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc)
+- name the file **`.layoutrc`** (**recommended**) or whatever you like
 
 ### Using the linting function
-- require the linting function anywhere your like by doing `const lintHtml = require('html-linter');`
+- require the linting function anywhere your like by doing `const lintLayout = require('layout-linter');`
 - use the function as follows:
 
 ```
-const lintHtml = require('html-linter');
+const lintLayout = require('layout-linter');
 
-let result = lintHtml({
+let result = lintLayout({
 
 
   /*
@@ -132,11 +132,11 @@ let result = lintHtml({
     - [String]
     - an absolute (or relative to the curret directory) path to a json file
       containing the linting rules
-    - if omitted, the linter will look for a `.htmllintrc` file in your app's
+    - if omitted, the linter will look for a `.layoutrc` file in your app's
       root folder only (it will not look for it in any of its subfolders)
   */
 
-  htmllintrc: '/some/custom/rules.config',
+  layoutrc: '/some/custom/rules.config',
 
 
 
@@ -146,7 +146,7 @@ let result = lintHtml({
       will appear in the linted HTML
     - [String]
     - an absolute (or relative to the curret directory) path to a .css file
-    - will use the default CSS (provided by html-linter internally) if omitted
+    - will use the default CSS (provided by layout-linter internally) if omitted
     - can alse be set to false, in which case no CSS will be used
   */
 
