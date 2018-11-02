@@ -4,4 +4,4 @@
 
 ### Features
 
-* makes first release of html-linter ([0fe67c5](https://github.com/peopledoc/html-linter/commit/0fe67c5))
+* makes first release of layout-linter ([0fe67c5](https://github.com/peopledoc/layout-linter/commit/0fe67c5))

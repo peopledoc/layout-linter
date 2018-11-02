@@ -1,6 +1,6 @@
 {
   "hooks": {
-    "pre-commit": "echo \"\n\n*** html-linter - COMMIT MESSAGE RULES ***\n\n>> Any errors in your commit message will be shown below\n>> If errors are found, make sure you use the [commit] command and not [git commit ...] when commiting\n>> This will provide a step-by-step guide that will prevent any such errors\n\n*** html-linter - COMMIT MESSAGE RULES *** \n\n\"",
+    "pre-commit": "echo \"\n\n*** LAYOUT-LINTER - COMMIT MESSAGE RULES ***\n\n>> Any errors in your commit message will be shown below\n>> If errors are found, make sure you use the [commit] command and not [git commit ...] when commiting\n>> This will provide a step-by-step guide that will prevent any such errors\n\n*** LAYOUT-LINTER - COMMIT MESSAGE RULES *** \n\n\"",
     "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
   }
 }

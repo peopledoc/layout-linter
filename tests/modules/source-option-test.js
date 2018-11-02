@@ -6,19 +6,19 @@ const assert = require('assert');
 const pathToParentFolder = require('../../scripts/dir').parent;
 const createScenario = require('../helpers/createScenario');
 const $ = require('../helpers/$');
-const lintHtml = require('../../index');
+const lintLayout = require('../../index');
 
 describe('testing source option', function() {
   it('can be passed a valid HTML string as `source`', function() {
     createScenario({
-      relativePathToRulesFile: '/.htmllintrc',
+      relativePathToRulesFile: '/.layoutrc',
       rules: [{
         selector: '.test',
         is: 'p'
       }]
     });
 
-    const result = lintHtml({
+    const result = lintLayout({
       source: `
         <html>
           <head>
@@ -34,7 +34,7 @@ describe('testing source option', function() {
 
     const $html = $(result.html);
 
-    assert.equal($html.find('.test[html-linter-tooltip-id]').length > 0, true, 'it works');
+    assert.equal($html.find('.test[layout-linter-tooltip-id]').length > 0, true, 'it works');
   });
 
   it('can be passed a relative path to an .html file as `source`', function() {
@@ -54,7 +54,7 @@ describe('testing source option', function() {
           </body>
         </html>
       `,
-      relativePathToRulesFile: '/.htmllintrc',
+      relativePathToRulesFile: '/.layoutrc',
       rules: [{
         selector: '.test',
         is: 'p'
@@ -63,13 +63,13 @@ describe('testing source option', function() {
 
     assert.ok(fs.existsSync(absolutePathToHtmlFile), `temporary ${absolutePathToHtmlFile} was generated for testing purposes`);
 
-    const result = lintHtml({
+    const result = lintLayout({
       source: relativePathToHtmlFile
     });
 
     const $html = $(result.html);
 
-    assert.equal($html.find('.test[html-linter-tooltip-id]').length > 0, true, 'it works');
+    assert.equal($html.find('.test[layout-linter-tooltip-id]').length > 0, true, 'it works');
   });
 
   it('can be passed an absolute path to an .html file as `source`', function() {
@@ -89,7 +89,7 @@ describe('testing source option', function() {
           </body>
         </html>
       `,
-      relativePathToRulesFile: '/.htmllintrc',
+      relativePathToRulesFile: '/.layoutrc',
       rules: [{
         selector: '.test',
         is: 'p'
@@ -98,12 +98,12 @@ describe('testing source option', function() {
 
     assert.ok(fs.existsSync(absolutePathToHtmlFile), `temporary ${absolutePathToHtmlFile} was generated for testing purposes`);
 
-    const result = lintHtml({
+    const result = lintLayout({
       source: absolutePathToHtmlFile
     });
 
     const $html = $(result.html);
 
-    assert.equal($html.find('.test[html-linter-tooltip-id]').length > 0, true, 'it works');
+    assert.equal($html.find('.test[layout-linter-tooltip-id]').length > 0, true, 'it works');
   });
 });
