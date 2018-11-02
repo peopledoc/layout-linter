@@ -1,0 +1,11 @@
+/.circleci
+/assets
+/demo
+/tests
+.eslintrc.js
+.gitignore
+.huskyrc
+commitlint.config.js
+index.html
+Makefile
+testing.md
