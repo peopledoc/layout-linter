@@ -2,7 +2,7 @@
 /assets
 /demo
 /tests
-.eslintrc.js
+.eslintrc
 .gitignore
 .huskyrc
 commitlint.config.js
