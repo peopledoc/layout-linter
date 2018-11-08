@@ -4,7 +4,7 @@
 
 ### Screenshot Of A Linted Page
 
-![demo screenshot](https://raw.githubusercontent.com/peopledoc/layout-linter/master/assets/demo.png)
+![demo screenshot](assets/preview.gif)
 
 ## How To Use
 
