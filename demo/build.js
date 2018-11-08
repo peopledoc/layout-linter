@@ -11,6 +11,7 @@ let result = lintLayout({
   layoutrc: './demo/.layoutrc'
 });
 
+if (!!process.env.DEBUG === true) {
 /* eslint-disable no-console */
 console.log('\n\n\n');
 console.log('========= LAYOUT-LINTER | DEMO (start) =========');
@@ -24,4 +25,5 @@ console.log('\n\n');
 console.log('=========  LAYOUT-LINTER | DEMO (end)  =========');
 console.log('\n\n\n');
 
+}
 fse.writeFileSync(pathToIndex, result.html);

@@ -206,11 +206,17 @@ The function will return an object containing the following keys:
 - go to `/layout-linter` and run `make install`
 - read this [document on how to write tests](https://github.com/peopledoc/layout-linter/blob/master/testing.md)
 
-## How To Demo
+## How To Try The Demo
 
-- close all current Chrome incognito windows
-- go to `/layout-linter` and run `make run-demo`
-- an incognito window will open up in your Chrome browser with an HTML page built using [Bootstrap](https://github.com/twbs/bootstrap). The page will have been linted using [the following set of rules](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc) (based on the [Bootstrap](https://github.com/twbs/bootstrap) framework HTML rules)
+In `layout-linter/` project directory, run:
+
+    make run-demo
+
+You will see an HTML page **linted using [the following set of rules](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc)** (based on the [Bootstrap](https://github.com/twbs/bootstrap) framework HTML rules).
+
+:information_source: You can use `DEBUG=true` to show more information.
+
+    DEBUG=true make run-demo
 
 ## How To Run Tests
 
