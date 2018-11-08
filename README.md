@@ -1,6 +1,7 @@
 # Layout-Linter [![CircleCI](https://circleci.com/gh/peopledoc/layout-linter.svg?style=svg)](https://circleci.com/gh/peopledoc/layout-linter)
 
-Create your own custom rules, using CSS selectors, to lint an HTML page and make sure it follows your HTML/CSS conventions (classes, attributes, tags, structure etc.)
+> Create your own custom rules, using CSS selectors, to lint an HTML page and make sure it follows your HTML/CSS conventions (classes, attributes, tags, structure etc.)
+
 ### Screenshot Of A Linted Page
 
 ![demo screenshot](https://raw.githubusercontent.com/peopledoc/layout-linter/master/assets/demo.png)
@@ -155,7 +156,7 @@ let result = lintLayout({
   */
 
   source: './source.html',
-
+;
 
 
 
@@ -202,9 +203,11 @@ The function will return an object containing the following keys:
 
 ## How To Contribute
 
-- run `git clone git@github.com:peopledoc/layout-linter.git`
-- go to `/layout-linter` and run `make install`
-- read this [document on how to write tests](https://github.com/peopledoc/layout-linter/blob/master/testing.md)
+    git clone git@github.com:peopledoc/layout-linter.git
+    cd ./layout-linter/
+    make install
+
+Read [how to write tests](./testing.md) for your rules.
 
 ## How To Try The Demo
 
@@ -220,7 +223,7 @@ You will see an HTML page **linted using [the following set of rules](https://gi
 
 ## How To Run Tests
 
-run
+In `layout-linter/` project directory, run:
 
 ```
 make test
