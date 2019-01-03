@@ -1,16 +1,19 @@
-# layout-linter [![CircleCI](https://circleci.com/gh/peopledoc/layout-linter.svg?style=svg)](https://circleci.com/gh/peopledoc/layout-linter)
+# Layout-Linter [![CircleCI](https://circleci.com/gh/peopledoc/layout-linter.svg?style=svg)](https://circleci.com/gh/peopledoc/layout-linter)
 
-Create your own custom rules, using CSS selectors, to lint an HTML page and make sure it follows your HTML/CSS conventions (classes, attributes, tags, structure etc.)
+> Create your own custom rules, using CSS selectors, to lint an HTML page and make sure it follows your HTML/CSS conventions (classes, attributes, tags, structure etc.)
 
-### screenshot of a linted page:
-![demo screenshot](https://raw.githubusercontent.com/peopledoc/layout-linter/master/assets/demo.png)
+### Screenshot Of A Linted Page
 
-## how to use
+![demo screenshot](assets/preview.gif)
 
-### install the linter in your app
+## How To Use
+
+### Install The Linter In Your App
+
 go to your app's folder and run `npm i layout-linter`
 
-### set up your linting rules
+### Set Up Your Linting Rules
+
 - create a file containing your own custom linting rules as a json
 - these linting rules are based on CSS selectors ([read more about them here](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors)), and can be as simple as the name of a tag (e.g. `div`) or very elaborate.
 - here is a guide on how to set up the contents of your json file:
@@ -106,7 +109,8 @@ go to your app's folder and run `npm i layout-linter`
 - [click here for a real example of such a file](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc)
 - name the file **`.layoutrc`** (**recommended**) or whatever you like
 
-### Using the linting function
+### Using The Linting Function
+
 - require the linting function anywhere your like by doing `const lintLayout = require('layout-linter');`
 - use the function as follows:
 
@@ -152,7 +156,7 @@ let result = lintLayout({
   */
 
   source: './source.html',
-
+;
 
 
 
@@ -196,19 +200,30 @@ The function will return an object containing the following keys:
        */
 }
 ```
-## how to contribute
 
-- run `git clone git@github.com:peopledoc/layout-linter.git`
-- go to `/layout-linter` and run `make install`
-- read this [document on how to write tests](https://github.com/peopledoc/layout-linter/blob/master/testing.md)
+## How To Contribute
 
-## how to demo
-- close all current Chrome incognito windows
-- go to `/layout-linter` and run `make run-demo`
-- an incognito window will open up in your Chrome browser with an HTML page built using [Bootstrap](https://github.com/twbs/bootstrap). The page will have been linted using [the following set of rules](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc) (based on the [Bootstrap](https://github.com/twbs/bootstrap) framework HTML rules)
+    git clone git@github.com:peopledoc/layout-linter.git
+    cd ./layout-linter/
+    make install
 
-## how to run tests
-run
+Read [how to write tests](./testing.md) for your rules.
+
+## How To Try The Demo
+
+In `layout-linter/` project directory, run:
+
+    make run-demo
+
+You will see an HTML page **linted using [the following set of rules](https://github.com/peopledoc/layout-linter/blob/master/demo/.layoutrc)** (based on the [Bootstrap](https://github.com/twbs/bootstrap) framework HTML rules).
+
+:information_source: You can use `DEBUG=true` to show more information.
+
+    DEBUG=true make run-demo
+
+## How To Run Tests
+
+In `layout-linter/` project directory, run:
 
 ```
 make test
